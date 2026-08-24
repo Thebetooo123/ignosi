@@ -254,3 +254,17 @@ body {
     height: 56px;
     width: auto;
 }
+
+/* Efecto "Ken Burns" (zoom lento) del carrusel de fondo del hero:
+   Bootstrap no tiene utilidades de animación/transform ni @keyframes, así
+   que el zoom vive aquí. La regla se ata a ".carousel-item.active" (clase
+   que el propio JS de Bootstrap agrega/quita en cada slide) para que la
+   animación reinicie en scale(1) cada vez que una imagen vuelve a
+   mostrarse, en vez de quedar corriendo de forma continua. */
+@keyframes ig-hero-kenburns {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+.carousel-item.active .ig-hero-kenburns {
+    animation: ig-hero-kenburns 9s ease-in-out forwards;
+}

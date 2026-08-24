@@ -47,13 +47,31 @@
     </div>
   </header>
 
-  <!-- Hero Section (full bleed, texto centrado) -->
+  <!-- Hero Section (full bleed, texto centrado, fondo en carrusel con efecto Ken Burns) -->
   <section class="position-relative d-flex align-items-center justify-content-center" style="min-height:800px;height:100vh;padding-top:5rem;">
-    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index:0;">
-      <div class="w-100 h-100 ig-bg-cover" data-alt="A modern, high-tech server room with glowing blue led lights on dark server racks. Corporate tech aesthetic, clean lines, professional telecommunications infrastructure. Depth of field showing rows of equipment." style="background-image:url('assets/images/hero-server-room.jpg')"></div>
-      <div class="position-absolute top-0 start-0 w-100 h-100 bg-black" style="--bs-bg-opacity:.4;mix-blend-mode:multiply;"></div>
+    <div class="carousel slide carousel-fade position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel" data-bs-interval="6000" id="heroCarousel" style="z-index:0;">
+      <div class="carousel-inner h-100">
+
+        <div class="carousel-item active h-100">
+          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="A modern, high-tech server room with glowing blue led lights on dark server racks. Corporate tech aesthetic, clean lines, professional telecommunications infrastructure. Depth of field showing rows of equipment." src="assets/images/hero-server-room-1.jpg">
+        </div>
+
+        <div class="carousel-item h-100">
+          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="Imagen." src="assets/images/hero-server-room-2.jpg">
+        </div>
+
+        <div class="carousel-item h-100">
+          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="Imagen." src="assets/images/hero-server-room-3.jpg">
+        </div>
+
+        <div class="carousel-item h-100">
+          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="Imagen." src="assets/images/hero-server-room-4.jpg">
+        </div>
+
+      </div>
     </div>
-    <div class="position-relative w-100 ig-container px-4 text-center" style="z-index:1;">
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black" style="--bs-bg-opacity:.4;mix-blend-mode:multiply;z-index:1;"></div>
+    <div class="position-relative w-100 ig-container px-4 text-center" style="z-index:2;">
       <div class="mx-auto ig-mw-4xl d-flex flex-column align-items-center">
         <h1 class="ig-display ig-font-serif text-white mb-4">
           Innovamos para Transformarte
