@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Ignosi</title>
+
+  <!-- Tipografías (autoalojadas, ver css/fonts.css y assets/fonts/) -->
+  <link href="css/fonts.css" rel="stylesheet">
+
+  <!-- Bootstrap + tema/estilos propios -->
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- TopNavBar (overlay transparente sobre el hero, tres columnas iguales vía Bootstrap Grid) -->
+  <header class="position-absolute top-0 start-0 w-100 bg-transparent text-white z-3">
+    <div class="container-fluid px-4 py-3">
+      <div class="row align-items-center">
+
+        <!-- Columna izquierda: menú de navegación -->
+        <div class="col-4 d-flex justify-content-start">
+          <nav class="nav">
+            <a class="nav-link text-white text-uppercase small" href="#">Inicio</a>
+            <a class="nav-link text-white text-uppercase small" href="#">Quiénes somos</a>
+            <a class="nav-link text-white text-uppercase small" href="#">Servicios</a>
+            <a class="nav-link text-white text-uppercase small" href="#">Contacto</a>
+          </nav>
+        </div>
+
+        <!-- Columna central: logo -->
+        <div class="col-4 d-flex justify-content-center">
+          <a class="text-decoration-none" href="#">
+            <img alt="IGNOSI Networks" class="ig-header-logo" src="assets/images/logo-ignosi.png">
+          </a>
+        </div>
+
+        <!-- Columna derecha: iconos -->
+        <div class="col-4 d-flex justify-content-end align-items-center gap-3">
+          <button class="btn btn-link text-white text-decoration-none p-0" type="button"><span class="material-symbols-outlined">search</span></button>
+          <button class="btn btn-link text-white text-decoration-none p-0" type="button"><span class="material-symbols-outlined">shopping_cart</span></button>
+          <button class="btn btn-link text-white text-decoration-none p-0" type="button"><span class="material-symbols-outlined">person</span></button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section (full bleed, texto centrado) -->
+  <section class="position-relative d-flex align-items-center justify-content-center" style="min-height:800px;height:100vh;padding-top:5rem;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index:0;">
+      <div class="w-100 h-100 ig-bg-cover" data-alt="A modern, high-tech server room with glowing blue led lights on dark server racks. Corporate tech aesthetic, clean lines, professional telecommunications infrastructure. Depth of field showing rows of equipment." style="background-image:url('assets/images/hero-server-room.jpg')"></div>
+      <div class="position-absolute top-0 start-0 w-100 h-100 bg-black" style="--bs-bg-opacity:.4;mix-blend-mode:multiply;"></div>
+    </div>
+    <div class="position-relative w-100 ig-container px-4 text-center" style="z-index:1;">
+      <div class="mx-auto ig-mw-4xl d-flex flex-column align-items-center">
+        <h1 class="ig-display ig-font-serif text-white mb-4">
+          Innovamos para Transformarte
+        </h1>
+        <p class="ig-body-lg ig-mw-2xl mx-auto mb-5" style="color:rgba(255,255,255,.8);">
+          Somos líderes integradores de soluciones tecnológicas y de telecomunicaciones especializadas en voz, datos y video. Construimos la infraestructura que impulsa tu negocio hacia el futuro.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Cards (grid de 3 columnas, solo clases de Bootstrap) -->
+  <section class="bg-white">
+    <div class="container py-5">
+      <div class="row justify-content-center text-center">
+
+        <div class="col-md-4 mb-4 mb-md-0">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body d-flex flex-column align-items-center text-center p-4">
+              <span class="material-symbols-outlined text-primary fs-1 mb-3">gpp_good</span>
+              <h5 class="card-title fw-bold mb-3">Quiénes somos</h5>
+              <p class="card-text text-muted mb-0">Expertos en infraestructura tecnológica con décadas de experiencia asegurando la continuidad de tu empresa.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 mb-md-0">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body d-flex flex-column align-items-center text-center p-4">
+              <span class="material-symbols-outlined text-primary fs-1 mb-3">cable</span>
+              <h5 class="card-title fw-bold mb-3">Servicios</h5>
+              <p class="card-text text-muted mb-0">Soluciones integrales de conectividad, seguridad física y respaldo de energía para entornos críticos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 mb-md-0">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body d-flex flex-column align-items-center text-center p-4">
+              <span class="material-symbols-outlined text-primary fs-1 mb-3">link</span>
+              <h5 class="card-title fw-bold mb-3">Alianzas estratégicas</h5>
+              <p class="card-text text-muted mb-0">Colaboramos con las marcas líderes globales para garantizar rendimiento y fiabilidad en cada proyecto.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner -->
+  <section class="ig-py-24" style="background-color:var(--ig-surface-container-low);">
+    <div class="ig-container px-4 text-center">
+      <h2 class="ig-headline-md ig-font-serif mx-auto ig-mw-4xl mb-4" style="line-height:1.3;">
+        Innovamos contigo. Marcas líderes para soluciones tecnológicas de última generación.
+      </h2>
+      <hr class="mx-auto" style="width:3rem;border-color:var(--ig-outline-variant);">
+    </div>
+  </section>
+
+  <!-- About Section (layout espacioso) -->
+  <section class="ig-section-py">
+    <div class="ig-container px-4">
+      <div class="row g-0 ig-gap-20 align-items-center flex-column flex-lg-row">
+
+        <div class="col-lg text-center text-lg-start">
+          <h4 class="ig-label-caps ig-font-mono text-uppercase mb-3" style="color:var(--ig-primary);">Bienvenido a IGNOSI</h4>
+          <h2 class="ig-headline-md ig-font-serif mb-4">
+            Estándares de calidad superior para infraestructura crítica
+          </h2>
+          <p class="ig-body-lg ig-mw-2xl mx-auto mx-lg-0 mb-5">En IGNOSI, nos enorgullece ofrecer servicios de integración tecnológica que cumplen con las más altas exigencias de la industria. Nuestro enfoque metódico y certificado garantiza que cada instalación, desde cableado estructurado hasta sistemas complejos de videovigilancia, se ejecute con precisión inquebrantable.</p>
+
+          <div class="d-inline-flex flex-wrap justify-content-center justify-content-lg-start ig-gap-16 pt-4 border-top">
+            <div class="text-center">
+              <div class="ig-stat-number ig-font-serif mb-2">5475+</div>
+              <div class="ig-label-caps ig-font-mono text-uppercase">Días de exp.</div>
+            </div>
+            <div class="text-center">
+              <div class="ig-stat-number ig-font-serif mb-2">2755+</div>
+              <div class="ig-label-caps ig-font-mono text-uppercase">Proyectos</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg w-100">
+          <div class="ratio rounded overflow-hidden" style="--bs-aspect-ratio:125%;background-color:var(--ig-surface-container-low);">
+            <img alt="" class="w-100 h-100 object-fit-cover ig-blend-luminosity" data-alt="A professional engineer in a pristine white hardhat and corporate attire inspecting a highly organized server rack with perfectly managed blue ethernet cables. Bright, clean, clinical lighting emphasizing technical precision." src="assets/images/about-engineer-rack.jpg" style="opacity:.9;">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid (tarjetas mínimas con divisiones de 1px vía bordes) -->
+  <section class="ig-section-py" style="background-color:var(--ig-surface-container-low);">
+    <div class="ig-container px-4">
+
+      <div class="text-center mb-5" style="margin-bottom:5rem !important;">
+        <h2 class="ig-headline-md ig-font-serif mb-3">Nuestros Servicios</h2>
+        <hr class="mx-auto mb-3" style="width:3rem;border-color:var(--ig-outline-variant);">
+        <p class="ig-body-lg ig-mw-2xl mx-auto mb-0">Soluciones robustas diseñadas para la continuidad operativa de su empresa.</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-0 border-top border-start" style="--bs-border-opacity:.3;">
+        <!-- Service 1 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">sensor_door</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Control inteligente de accesos</h3>
+        </div>
+        <!-- Service 2 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">battery_charging_full</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Sistemas de energía ininterrumpida</h3>
+        </div>
+        <!-- Service 3 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">wifi</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Redes inalámbricas y site surveys</h3>
+        </div>
+        <!-- Service 4 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">dns</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Cableado estructurado y data center</h3>
+        </div>
+        <!-- Service 5 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">settings_input_antenna</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Radiocomunicaciones</h3>
+        </div>
+        <!-- Service 6 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">detector_smoke</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Sistemas de detección de Incendios</h3>
+        </div>
+        <!-- Service 7 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">videocam</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Sistemas de video-vigilancia CCTV</h3>
+        </div>
+        <!-- Service 8 -->
+        <div class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
+          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">tv_gen</span>
+          <h3 class="ig-body-lg ig-font-serif mb-0">Sistemas de video wall</h3>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer Contact CTA -->
+  <section class="ig-py-32">
+    <div class="ig-mw-3xl mx-auto px-4 text-center">
+      <h2 class="ig-font-serif mb-4" style="font-size:48px;line-height:1.2;">Contáctanos</h2>
+      <hr class="mx-auto mb-4" style="width:4rem;border-color:rgba(var(--ig-outline-variant-rgb),.6);">
+      <p class="ig-body-lg mb-0">
+        Nuestro equipo de soporte técnico especializado está listo para asesorarle en su próximo proyecto de infraestructura tecnológica.
+      </p>
+    </div>
+  </section>
+
+  <!-- Formulario de contacto (solo clases de Bootstrap) -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <h3 class="text-center mb-4">Envíanos un Mensaje</h3>
+          <form>
+            <input class="form-control mb-4" placeholder="Nombre" type="text">
+            <input class="form-control mb-4" placeholder="Email*" type="email">
+            <textarea class="form-control mb-4" placeholder="Mensaje" rows="6"></textarea>
+            <div class="text-center">
+              <button class="btn btn-dark px-5 py-2 fw-bold" type="submit">ENVIAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component (oscuro, minimalista) -->
+  <footer class="w-100" style="background-color:var(--ig-footer-bg);color:rgba(255,255,255,.7);">
+    <div class="ig-container px-4 ig-py-24">
+
+      <div class="row row-cols-1 row-cols-md-4 g-5">
+
+        <div class="col">
+          <div class="ig-headline-sm ig-font-serif text-white text-uppercase mb-4" style="letter-spacing:.15em;">IGNOSI<br><span class="d-block mt-1 fs-6" style="letter-spacing:.3em;color:rgba(255,255,255,.5);">Networks</span></div>
+          <p class="mb-0">
+            Expertos en infraestructura tecnológica.
+          </p>
+        </div>
+
+        <div class="col">
+          <h4 class="ig-label-caps ig-font-mono text-white text-uppercase mb-4">Servicios</h4>
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+            <li><a class="text-decoration-none ig-link-hover-white" href="#" style="color:inherit;">WiFi</a></li>
+            <li><a class="text-decoration-none ig-link-hover-white" href="#" style="color:inherit;">CCTV</a></li>
+            <li><a class="text-decoration-none ig-link-hover-white" href="#" style="color:inherit;">Control de Acceso</a></li>
+            <li><a class="text-decoration-none ig-link-hover-white" href="#" style="color:inherit;">Detección de Incendio</a></li>
+            <li><a class="text-decoration-none ig-link-hover-white" href="#" style="color:inherit;">Data Centers</a></li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h4 class="ig-label-caps ig-font-mono text-white text-uppercase mb-4">Legal</h4>
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+            <li><a class="text-decoration-none ig-link-hover-white" href="#" style="color:inherit;">Privacidad</a></li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h4 class="ig-label-caps ig-font-mono text-white text-uppercase mb-4">Contacto</h4>
+          <ul class="list-unstyled d-flex flex-column gap-4 mb-0">
+            <li class="d-flex align-items-start gap-3">
+              <span class="material-symbols-outlined mt-1" style="font-size:20px;opacity:.7;">location_on</span>
+              <span>Issac Garza 1764,<br>Monterrey</span>
+            </li>
+            <li class="d-flex align-items-center gap-3">
+              <span class="material-symbols-outlined" style="font-size:20px;opacity:.7;">call</span>
+              <span>81-2353-1451</span>
+            </li>
+            <li class="d-flex align-items-center gap-3">
+              <span class="material-symbols-outlined" style="font-size:20px;opacity:.7;">mail</span>
+              <span>ventas@osinet.mx</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-top mt-5 pt-4 text-center small" style="border-color:rgba(255,255,255,.1) !important;">© IGNOSI. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de chat -->
+  <button class="position-fixed d-flex align-items-center justify-content-center rounded-circle text-white border-0 shadow-lg ig-fab" style="bottom:2rem;right:2rem;width:3.5rem;height:3.5rem;z-index:1030;" type="button">
+    <span class="material-symbols-outlined">chat_bubble</span>
+  </button>
+
+  <script src="js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

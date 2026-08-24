@@ -1,0 +1,13 @@
+# Dependencias (si en el futuro se agrega tooling de Node)
+node_modules/
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Logs
+*.log

@@ -1,0 +1,256 @@
+/**
+ * Tema y estilos propios de IGNOSI Networks sobre Bootstrap 5.3.
+ *
+ * La mayor parte del diseño se resuelve reasignando las variables CSS que
+ * Bootstrap ya expone (--bs-primary, --bs-body-color, --bs-border-radius,
+ * --bs-emphasis-color, --bs-heading-color, etc.), de modo que las clases
+ * nativas de Bootstrap (text-primary, bg-primary, btn-primary, h1..h6,
+ * .border, .rounded...) adopten automáticamente la identidad de marca sin
+ * necesidad de CSS adicional.
+ *
+ * Las reglas al final del archivo (prefijo .ig-) cubren únicamente los
+ * casos que Bootstrap 5.3 no resuelve con variables ni utilidades
+ * (ver justificación en cada bloque).
+ */
+
+/* =========================================================
+   1) Variables de tema — remapeo de la paleta/tipografía/radios
+   originales (antes definidos en js/tailwind.config.js) a las
+   variables CSS nativas de Bootstrap.
+   ========================================================= */
+:root {
+    /* Paleta de marca (tokens con nombre, para reutilizar en reglas .ig-*) */
+    --ig-primary: #003461;
+    --ig-primary-rgb: 0, 52, 97;
+    --ig-on-surface: #1a1c1e;
+    --ig-on-surface-rgb: 26, 28, 30;
+    --ig-on-surface-variant: #424750;
+    --ig-on-surface-variant-rgb: 66, 71, 80;
+    --ig-outline: #727781;
+    --ig-outline-rgb: 114, 119, 129;
+    --ig-outline-variant: #c2c6d1;
+    --ig-outline-variant-rgb: 194, 198, 209;
+    --ig-surface-container-lowest: #ffffff;
+    --ig-surface-container-low: #f8f9fa;
+    --ig-surface-bright: #f9f9fc;
+    --ig-footer-bg: #1a1a1a;
+
+    --ig-font-serif: "Playfair Display", serif;
+    --ig-font-mono: "JetBrains Mono", monospace;
+
+    /* Bootstrap adopta la marca a través de sus propias variables */
+    --bs-primary: var(--ig-primary);
+    --bs-primary-rgb: var(--ig-primary-rgb);
+    --bs-primary-text-emphasis: var(--ig-primary);
+    --bs-link-color: var(--ig-primary);
+    --bs-link-color-rgb: var(--ig-primary-rgb);
+    --bs-link-hover-color: var(--ig-primary);
+    --bs-link-hover-color-rgb: var(--ig-primary-rgb);
+
+    --bs-body-font-family: "Karla", sans-serif;
+    --bs-body-font-weight: 300;
+    --bs-body-font-size: 1rem;
+    --bs-body-line-height: 1.7;
+    --bs-body-color: var(--ig-on-surface-variant);
+    --bs-body-color-rgb: var(--ig-on-surface-variant-rgb);
+    --bs-body-bg: var(--ig-surface-container-lowest);
+
+    /* Texto de encabezados ("on-surface"): Bootstrap pinta h1..h6 con
+       var(--bs-heading-color), que por defecto hereda de emphasis-color */
+    --bs-emphasis-color: var(--ig-on-surface);
+    --bs-emphasis-color-rgb: var(--ig-on-surface-rgb);
+    --bs-heading-color: var(--ig-on-surface);
+
+    /* Texto secundario/atenuado (p. ej. placeholders) = "outline" original */
+    --bs-secondary-color: var(--ig-outline);
+    --bs-secondary-color-rgb: var(--ig-outline-rgb);
+
+    --bs-border-color: var(--ig-outline-variant);
+    --bs-border-color-translucent: rgba(var(--ig-outline-variant-rgb), 0.5);
+    --bs-border-radius: 0.125rem;
+    --bs-border-radius-sm: 0.125rem;
+    --bs-border-radius-lg: 0.25rem;
+    --bs-border-radius-xl: 0.5rem;
+
+    --bs-tertiary-bg: var(--ig-surface-container-low);
+    --bs-tertiary-color: var(--ig-outline);
+
+    /* "gutter" original (24px) = mitad del gutter-x de Bootstrap, así
+       container/row quedan con el mismo padding lateral sin CSS extra */
+    --bs-gutter-x: 3rem;
+}
+
+/* =========================================================
+   2) Iconografía Material Symbols (sin relación con el framework CSS,
+   se mantiene igual que en la versión anterior).
+   ========================================================= */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Suavizado de fuente y color de selección de texto: Bootstrap no incluye
+   utilidades para -webkit-font-smoothing ni para ::selection. */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+::selection {
+    background-color: rgba(var(--ig-primary-rgb), 0.2);
+}
+
+/* El estado :focus de .form-control en Bootstrap añade un halo de color
+   (box-shadow); este diseño solo cambia el color del borde al enfocar. */
+.form-control:focus {
+    box-shadow: none;
+    border-color: var(--ig-primary);
+}
+
+/* =========================================================
+   3) Utilidades propias — cada bloque documenta por qué Bootstrap no
+   lo resuelve por sí solo.
+   ========================================================= */
+
+/* Bootstrap no expone una variable de "headings-font-family" en el CSS
+   compilado (solo existe a nivel Sass); la tipografía secundaria (serif)
+   se aplica por elemento, igual que hacía el original con font-serif. */
+.ig-font-serif { font-family: var(--ig-font-serif); }
+.ig-font-mono { font-family: var(--ig-font-mono); }
+
+/* Escala tipográfica a medida (display/headline/stat/label-caps/body-lg):
+   los tamaños de Bootstrap (.display-1..6, .fs-1..6, .lead) son una escala
+   fija que no coincide con los valores exactos de este diseño (tamaño +
+   line-height + letter-spacing específicos), así que se reproducen con
+   clases propias en vez de forzar la escala de Bootstrap a otros valores. */
+.ig-display {
+    font-size: 40px;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+@media (min-width: 768px) {
+    .ig-display {
+        font-size: 64px;
+        line-height: 1.1;
+    }
+}
+
+.ig-headline-md {
+    font-size: 40px;
+    line-height: 1.3;
+    font-weight: 400;
+}
+
+.ig-headline-sm {
+    font-size: 28px;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.ig-stat-number {
+    font-size: 56px;
+    line-height: 1;
+    font-weight: 400;
+}
+
+.ig-label-caps {
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+}
+
+.ig-body-lg {
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+/* Anchos máximos de bloques de texto (2xl/3xl/4xl): Bootstrap solo
+   trae utilidades de max-width en porcentaje (.mw-25/50/75/100), no una
+   escala en valores fijos de px/rem para controlar longitud de línea. */
+.ig-mw-2xl { max-width: 42rem; }  /* 672px */
+.ig-mw-3xl { max-width: 48rem; }  /* 768px */
+.ig-mw-4xl { max-width: 56rem; }  /* 896px */
+
+/* Ancho de contenedor principal (1280px): no coincide con ningún
+   breakpoint de .container-* de Bootstrap (xl=1140px, xxl=1320px), que
+   además solo son "current" a partir de su breakpoint. */
+.ig-container {
+    max-width: 1280px;
+    margin-inline: auto;
+}
+
+/* Separaciones de sección: las utilidades de espaciado de Bootstrap
+   terminan en $spacer*3 = 3rem (48px, .py-5); este diseño usa valores
+   mayores (64/96/120/128px) para distintas secciones. */
+.ig-section-py {
+    padding-block: 64px;
+}
+@media (min-width: 992px) {
+    .ig-section-py {
+        padding-block: 120px;
+    }
+}
+.ig-py-24 { padding-block: 96px; }
+.ig-py-32 { padding-block: 128px; }
+
+/* row-gap/column-gap por encima de 3rem: las utilidades .gap-* de
+   Bootstrap terminan en .gap-5 = 3rem (48px). */
+.ig-gap-16 { gap: 4rem; }  /* 64px, estadísticas de "Acerca de" */
+.ig-gap-20 { gap: 5rem; }  /* 80px, columnas de "Acerca de" */
+
+/* Imagen de fondo del hero: Bootstrap no incluye utilidades de
+   background-image / background-size / background-position (solo de
+   background-color), así que el "cover" + centrado necesita CSS propio.
+   La URL de la imagen se sigue inyectando inline vía style, como en el
+   original. */
+.ig-bg-cover {
+    background-size: cover;
+    background-position: center;
+}
+
+/* mix-blend-mode no tiene utilidad equivalente en Bootstrap. */
+.ig-blend-luminosity {
+    mix-blend-mode: luminosity;
+    transition: mix-blend-mode 0.7s ease, opacity 0.7s ease;
+}
+.ig-blend-luminosity:hover {
+    mix-blend-mode: normal;
+}
+
+/* Estados :hover: Bootstrap no genera variantes hover: para sus
+   utilidades (a diferencia de Tailwind); se agrupan aquí las pocas
+   reglas de hover que usa el diseño. */
+.ig-link-hover-white {
+    transition: color 0.15s ease-in-out;
+}
+.ig-link-hover-white:hover {
+    color: #fff !important;
+}
+
+.ig-service-card {
+    transition: background-color 0.15s ease-in-out;
+}
+.ig-service-card:hover {
+    background-color: var(--ig-surface-bright);
+}
+
+/* Botón flotante de chat y navbar con fondo "on-surface": mismo caso que
+   arriba, hover a "primary" que Bootstrap no ofrece por utilidad. */
+.ig-fab {
+    background-color: var(--ig-on-surface);
+    transition: background-color 0.15s ease-in-out;
+}
+.ig-fab:hover {
+    background-color: var(--ig-primary);
+}
+
+/* Logo del header (assets/images/logo-ignosi.png, 438x150px): Bootstrap
+   no tiene utilidades de alto en píxeles fijos (solo h-25/50/75/100 en
+   porcentaje), así que el único gancho nativo sería img-fluid, que solo
+   limita el ancho y dejaría el logo a su alto original (150px), demasiado
+   grande para el header. width:auto mantiene su proporción original. */
+.ig-header-logo {
+    height: 56px;
+    width: auto;
+}
