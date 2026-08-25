@@ -1,26 +1,42 @@
 /**
  * Comportamiento de interfaz del sitio de IGNOSI Networks.
- * El header ya no tiene menú colapsable (ver partials/header.html): los
- * enlaces y el logo se resuelven con el grid de Bootstrap (row/col-4) en
- * una sola fila, sin JS de interacción.
+ * El header ya no tiene menú colapsable propio (ver partials/header.html):
+ * es un navbar estándar de Bootstrap, el colapso en móvil lo maneja el JS
+ * del propio Bootstrap (data-bs-toggle) sin código de interacción propio.
  */
 
-/* Header y footer viven en partials/header.html y partials/footer.html y se
-   inyectan aquí en tiempo de ejecución en cada página (index.html,
-   contacto.html, quienes-somos.html) que tenga los contenedores
-   #site-header/#site-footer: el sitio no tiene build step ni backend/motor
-   de plantillas, así que no existe una forma nativa de "incluir" un archivo
-   HTML dentro de otro sin JS. Requiere servir el sitio por HTTP (no abrir
-   los .html con doble clic desde el explorador de archivos), porque
-   fetch() de archivos locales vía file:// está bloqueado por CORS en la
-   mayoría de navegadores.
+/* GitHub Pages (Project Site) publica el sitio bajo usuario.github.io/repo/,
+   no en la raíz del dominio, así que cualquier ruta que empiece con "/"
+   (ej. "/assets/...") apunta a usuario.github.io/assets/... y da 404. Por
+   eso cada página referencia sus propios recursos (css/js/imágenes) con
+   rutas relativas estrictas ("./..." en index.html, "../..." en las
+   páginas de un nivel de subcarpeta como contacto/index.html), incluyendo
+   el <script src="...js/main.js"> que carga este archivo.
+
+   Ese mismo <script src> nos dice, en tiempo de ejecución, cuántos niveles
+   hay que subir para llegar a la raíz del sitio: es exactamente el prefijo
+   ("./" o "../", o "../../" si el sitio creciera más niveles) que el autor
+   de la página ya tuvo que escribir a mano para que main.js cargara. Lo
+   leemos de document.currentScript (debe capturarse de forma síncrona, al
+   inicio: currentScript vuelve a ser null dentro de un callback/await) y lo
+   reutilizamos como "basePath" para:
+   - construir la URL de fetch() de partials/header.html y partials/footer.html
+     (que también viven relativos a la raíz), y
+   - sustituir el token %BASE% dentro de esos partials, que al ser
+     compartidos por páginas a distinta profundidad no pueden traer un
+     prefijo relativo fijo escrito a mano (el logo o los enlaces del menú
+     necesitan "./" desde Home pero "../" desde /contacto/, /quienes-somos/).
 */
-async function loadPartial(containerId, path) {
+const mainScriptSrc = document.currentScript.getAttribute('src');
+const basePath = mainScriptSrc.replace(/js\/main\.js$/, '');
+
+async function loadPartial(containerId, partialFile) {
   const container = document.getElementById(containerId);
   if (!container) return;
-  const response = await fetch(path);
-  container.outerHTML = await response.text();
+  const response = await fetch(basePath + partialFile);
+  const html = (await response.text()).split('%BASE%').join(basePath);
+  container.outerHTML = html;
 }
 
-loadPartial('site-header', '/partials/header.html');
-loadPartial('site-footer', '/partials/footer.html');
+loadPartial('site-header', 'partials/header.html');
+loadPartial('site-footer', 'partials/footer.html');

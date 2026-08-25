@@ -1,4 +1,8 @@
-<!-- Footer Component (oscuro, minimalista) -->
+<!-- Footer Component (oscuro, minimalista). %BASE% lo sustituye js/main.js
+     por "./" o "../" según la profundidad de la página que inyectó este
+     partial (ver comentario en main.js) — necesario para que el enlace de
+     "Servicios" apunte a la home aunque el footer se cargue desde una
+     subcarpeta como /contacto/. -->
 <footer class="w-100" style="background-color:var(--ig-footer-bg);color:rgba(255,255,255,.7);">
   <div class="ig-container px-4 py-5">
 
@@ -14,11 +18,11 @@
       <div class="col">
         <h4 class="ig-label-caps ig-font-mono text-white text-uppercase mb-3">Servicios</h4>
         <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
-          <li><a class="text-decoration-none ig-link-hover-white" href="/#servicios" style="color:inherit;">Servicio 1</a></li>
-          <li><a class="text-decoration-none ig-link-hover-white" href="/#servicios" style="color:inherit;">Servicio 2</a></li>
-          <li><a class="text-decoration-none ig-link-hover-white" href="/#servicios" style="color:inherit;">Servicio 3</a></li>
-          <li><a class="text-decoration-none ig-link-hover-white" href="/#servicios" style="color:inherit;">Servicio 4</a></li>
-          <li><a class="text-decoration-none ig-link-hover-white" href="/#servicios" style="color:inherit;">Servicio 5</a></li>
+          <li><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Servicio 1</a></li>
+          <li><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Servicio 2</a></li>
+          <li><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Servicio 3</a></li>
+          <li><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Servicio 4</a></li>
+          <li><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Servicio 5</a></li>
         </ul>
       </div>
 
