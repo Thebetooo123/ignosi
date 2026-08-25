@@ -235,24 +235,23 @@ body {
     background-color: var(--ig-surface-bright);
 }
 
-/* Botón flotante de chat y navbar con fondo "on-surface": mismo caso que
-   arriba, hover a "primary" que Bootstrap no ofrece por utilidad. */
-.ig-fab {
-    background-color: var(--ig-on-surface);
-    transition: background-color 0.15s ease-in-out;
-}
-.ig-fab:hover {
-    background-color: var(--ig-primary);
-}
-
 /* Logo del header (assets/images/logo-ignosi.png, 438x150px): Bootstrap
    no tiene utilidades de alto en píxeles fijos (solo h-25/50/75/100 en
-   porcentaje), así que el único gancho nativo sería img-fluid, que solo
-   limita el ancho y dejaría el logo a su alto original (150px), demasiado
-   grande para el header. width:auto mantiene su proporción original. */
+   porcentaje, ni tampoco una versión "responsive" de esas), así que el
+   único gancho nativo sería img-fluid, que solo limita el ancho y dejaría
+   el logo a su alto original (150px). width:auto mantiene su proporción
+   original. Se reduce a 56px por debajo del breakpoint lg (mismo punto en
+   el que el navbar de Bootstrap colapsa a menú hamburguesa) para que el
+   logo no domine el espacio angosto del header en móvil, y crece a 80px
+   en pantallas lg+ para tener protagonismo visual en el navbar expandido. */
 .ig-header-logo {
     height: 56px;
     width: auto;
+}
+@media (min-width: 992px) {
+    .ig-header-logo {
+        height: 80px;
+    }
 }
 
 /* Efecto "Ken Burns" (zoom lento) del carrusel de fondo del hero:

@@ -1,0 +1,40 @@
+<!-- TopNavBar: Navbar responsivo estándar de Bootstrap (navbar + navbar-toggler +
+     navbar-collapse). En el flujo normal del documento (sin sticky-top/fixed-top):
+     al hacer scroll, el header sube y desaparece con el resto de la página. En
+     móvil (por debajo de lg), el botón hamburguesa colapsa el menú para que los
+     enlaces nunca se superpongan con el logo. -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid px-4 py-3">
+
+      <!-- Logotipo (navbar-brand), alineado a la izquierda -->
+      <a class="navbar-brand" href="/">
+        <img alt="IGNOSI Networks" class="ig-header-logo" src="/assets/images/logo-ignosi.png">
+      </a>
+
+      <!-- Botón hamburguesa: solo visible por debajo de lg, colapsa #navbarNav -->
+      <button aria-controls="navbarNav" aria-expanded="false" aria-label="Mostrar/ocultar navegación" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menú colapsable: oculto en móvil hasta presionar el toggler -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link text-uppercase small" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase small" href="/quienes-somos">Quiénes somos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase small" href="/#servicios">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-uppercase small" href="/contacto">Contacto</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</header>

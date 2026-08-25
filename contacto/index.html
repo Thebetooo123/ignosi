@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contacto | Ignosi</title>
+
+  <!-- Tipografías (autoalojadas, ver css/fonts.css y assets/fonts/) -->
+  <link href="/css/fonts.css" rel="stylesheet">
+
+  <!-- Bootstrap + tema/estilos propios -->
+  <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header global: se inyecta desde partials/header.html vía js/main.js -->
+  <div id="site-header"></div>
+
+  <!-- Encabezado de la página (solo clases de Bootstrap) -->
+  <section class="bg-white py-5 text-center">
+    <div class="container">
+      <h1 class="display-5">Contáctanos</h1>
+      <div class="col-md-8 mx-auto">
+        <p class="text-muted">
+          Nuestro equipo de soporte técnico especializado está listo para asesorarle en su próximo proyecto de infraestructura tecnológica.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de contacto (solo clases de Bootstrap) -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <h3 class="text-center mb-4">Envíanos un Mensaje</h3>
+          <form>
+            <input class="form-control mb-4" placeholder="Nombre" type="text">
+            <input class="form-control mb-4" placeholder="Email*" type="email">
+            <textarea class="form-control mb-4" placeholder="Mensaje" rows="6"></textarea>
+            <div class="text-center">
+              <button class="btn btn-dark px-5 py-2 fw-bold" type="submit">ENVIAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer global: se inyecta desde partials/footer.html vía js/main.js -->
+  <div id="site-footer"></div>
+
+  <script src="/js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
