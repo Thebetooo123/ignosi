@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENT.md
 
-Guía de contexto para trabajar en este repositorio con Claude Code.
+Guía de contexto para trabajar en este repositorio con agentes de IA.
 
 ## Qué es este proyecto
 
@@ -50,3 +50,29 @@ El sitio no debe tener ningún `<link>`/`url()`/`src` apuntando a un dominio ext
 - Si se agregan imágenes propias, colocarlas en `assets/images/` y referenciarlas con rutas relativas con el prefijo que corresponda a la profundidad de la página (`./assets/images/...` desde la raíz, `../assets/images/...` desde una subcarpeta — ver "Rutas: siempre relativas" en Convenciones), nunca con `/assets/images/...` ni con URLs externas.
 - Verificar que los enlaces de ancla (`href="#"`) del menú y footer sigan funcionando o se actualicen a secciones/páginas reales conforme el sitio evolucione.
 - No modificar `css/vendor/bootstrap.min.css` ni `js/vendor/bootstrap.bundle.min.js` — son builds oficiales sin tocar; cualquier ajuste va en `css/styles.css` o `js/main.js`.
+
+## Regla de prioridad para estilos y animaciones
+
+Toda implementación de estilos, componentes visuales, responsive design y animaciones deberá realizarse **primero utilizando las capacidades nativas de Bootstrap 5.3.x** ya incluidas en el proyecto.
+
+Antes de implementar CSS, JavaScript o soluciones personalizadas ("código hecho en casa"), el agente deberá verificar si Bootstrap ofrece una solución adecuada para el requerimiento.
+
+Si Bootstrap **no puede resolver el requerimiento de forma adecuada**, el agente podrá implementar una solución personalizada, pero deberá:
+
+1. Indicar explícitamente qué limitación de Bootstrap impide utilizar una solución nativa.
+2. Explicar brevemente por qué la solución personalizada es necesaria.
+3. Mantener la solución personalizada lo más simple, modular y compatible posible con la estructura y estilos existentes.
+4. Evitar duplicar funcionalidades que Bootstrap ya proporciona.
+
+**Principio general:** Bootstrap es siempre la primera opción; las soluciones personalizadas son la excepción y deben estar justificadas.
+
+### Bootstrap First Policy
+
+When implementing any visual style, layout, responsive behavior, component, transition, or animation:
+
+- **MUST** attempt to solve the requirement using Bootstrap 5.3.x first.
+- **MUST NOT** introduce custom CSS or JavaScript when an adequate Bootstrap solution already exists.
+- If Bootstrap cannot adequately satisfy the requirement, the agent **MUST document the limitation before introducing a custom solution**.
+- Custom implementations must be minimal, isolated, maintainable, and consistent with the existing project architecture.
+
+Bootstrap is the default implementation; custom code is an exception and must be justified.

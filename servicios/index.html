@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Servicios | Ignosi</title>
+
+  <!-- Tipografías (autoalojadas, ver css/fonts.css y assets/fonts/) -->
+  <link href="../css/fonts.css" rel="stylesheet">
+
+  <!-- Bootstrap + tema/estilos propios -->
+  <link href="../css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header global: se inyecta desde partials/header.html vía js/main.js -->
+  <div id="site-header"></div>
+
+  <!-- Feature sections por servicio: una <section> amplia por servicio, grid 50/50
+       (texto + placeholder de imagen), alternando lado (Z-pattern, order-md-*) y
+       fondo (bg-white/bg-light) para separarlas visualmente. Los id se mantienen
+       para las anclas que enlazan desde la grilla de servicios del Home. Solo
+       clases nativas de Bootstrap. -->
+
+  <!-- Servicio 1 (impar): texto izquierda, imagen derecha -->
+  <section class="bg-white py-5 my-5" id="redes-comunicaciones">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">lan</span>
+          <h3 class="mb-3">Redes y Comunicaciones</h3>
+          <p class="lead text-muted mb-0">Diseñamos e implementamos redes corporativas robustas y escalables. Trabajamos con líderes de la industria como Cisco, Aruba, Ubiquiti y TP-Link para garantizar conectividad ininterrumpida, alta velocidad y una gestión eficiente en cualquier entorno empresarial.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio 2 (par): imagen izquierda, texto derecha -->
+  <section class="bg-light py-5 my-5" id="seguridad-informatica">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6 order-md-2">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">shield_lock</span>
+          <h3 class="mb-3">Seguridad Informática</h3>
+          <p class="lead text-muted mb-0">Protegemos la integridad de su información y sus activos digitales contra amenazas cibernéticas. Mediante herramientas de nueva generación de firmas como Fortinet, Check Point y Kaspersky, aseguramos un perímetro impenetrable para su negocio.</p>
+        </div>
+        <div class="col-md-6 order-md-1">
+          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio 3 (impar): texto izquierda, imagen derecha -->
+  <section class="bg-white py-5 my-5" id="seguridad-electronica">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">videocam</span>
+          <h3 class="mb-3">Seguridad Electrónica</h3>
+          <p class="lead text-muted mb-0">Mantenemos el control total y la vigilancia de sus instalaciones. Integramos sistemas avanzados de videovigilancia y control de acceso con marcas premium como Hikvision, Dahua, Bosch y ZKTeco, brindando tranquilidad las 24 horas.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio 4 (par): imagen izquierda, texto derecha -->
+  <section class="bg-light py-5 my-5" id="cableado-estructurado">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6 order-md-2">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">cable</span>
+          <h3 class="mb-3">Cableado Estructurado</h3>
+          <p class="lead text-muted mb-0">Construimos la columna vertebral de su infraestructura TI. Realizamos el diseño e implementación de cableado bajo normativas internacionales, utilizando materiales de máxima calidad de Panduit, Charofil y Linkedpro para un rendimiento óptimo.</p>
+        </div>
+        <div class="col-md-6 order-md-1">
+          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio 5 (impar): texto izquierda, imagen derecha -->
+  <section class="bg-white py-5 my-5" id="servidores">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">dns</span>
+          <h3 class="mb-3">Servidores</h3>
+          <p class="lead text-muted mb-0">Optimizamos el procesamiento y almacenamiento de su empresa. Realizamos la instalación, configuración y virtualización de servidores físicos y virtuales, adaptando la capacidad de cómputo a las exigencias críticas de su operación diaria, respaldados por energía ininterrumpida de APC y Tripp-Lite.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio 6 (par): imagen izquierda, texto derecha -->
+  <section class="bg-light py-5 my-5" id="cloud">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6 order-md-2">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">cloud</span>
+          <h3 class="mb-3">Cloud</h3>
+          <p class="lead text-muted mb-0">Facilitamos su transición a la nube de forma segura y estructurada. Ofrecemos hospedaje, respaldo y migración en infraestructuras líderes a nivel global como Microsoft Azure y AWS, complementadas con soluciones de respaldo de Veeam.</p>
+        </div>
+        <div class="col-md-6 order-md-1">
+          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio 7 (impar): texto izquierda, imagen derecha -->
+  <section class="bg-white py-5 my-5" id="equipo-computo">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">computer</span>
+          <h3 class="mb-3">Equipo de Cómputo y Accesorios</h3>
+          <p class="lead text-muted mb-0">Proveemos a su equipo con las mejores herramientas del mercado. Distribuimos equipos de cómputo y periféricos de marcas top como Dell, HP, Lenovo, Western Digital y Logitech, asegurando durabilidad y rendimiento operativo.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicio 8 (par): imagen izquierda, texto derecha -->
+  <section class="bg-light py-5 my-5" id="soporte-tecnico">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6 order-md-2">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">support_agent</span>
+          <h3 class="mb-3">Soporte Técnico</h3>
+          <p class="lead text-muted mb-0">Brindamos asistencia técnica especializada para mantener la continuidad de su negocio. Nuestro equipo ofrece soporte remoto o en sitio, resolviendo incidencias rápidamente y asegurando que su infraestructura tecnológica opere sin contratiempos.</p>
+        </div>
+        <div class="col-md-6 order-md-1">
+          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
+            <span class="text-muted">Espacio para Imagen/Animación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer global: se inyecta desde partials/footer.html vía js/main.js -->
+  <div id="site-footer"></div>
+
+  <script src="../js/vendor/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

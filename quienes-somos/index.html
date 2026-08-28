@@ -17,101 +17,190 @@
   <!-- Header global: se inyecta desde partials/header.html vía js/main.js -->
   <div id="site-header"></div>
 
-  <!-- Sección 1: Hero de la página. La imagen de fondo y su capa oscura se
-       resuelven 100% con utilidades nativas de Bootstrap (position-absolute
-       + object-fit-cover para la imagen, bg-black + bg-opacity-50 para el
-       overlay), sin ninguna clase ig-* ni CSS propio: no hizo falta. -->
-  <section class="container-fluid position-relative py-5">
-    <img alt="" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" src="../assets/images/hero-server-room-2.jpg">
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-50"></div>
-    <div class="position-relative z-2">
-      <h1 class="display-4 text-white text-center fw-bold my-5">QUIÉNES SOMOS</h1>
+  <!-- 1. Hero Interno (solo clases de Bootstrap) -->
+  <section class="bg-dark text-white py-5">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Quiénes Somos</h1>
+      <p class="lead mb-0">Innovamos para transformarte</p>
     </div>
   </section>
 
-  <!-- Sección 2: descripción a dos columnas, mismo patrón de imagen de fondo
-       + overlay que la sección 1 (solo utilidades de Bootstrap), con otra
-       imagen distinta. -->
-  <section class="container-fluid position-relative py-5">
-    <img alt="" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" src="../assets/images/hero-server-room-3.jpg">
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-50"></div>
-    <div class="container position-relative z-2 py-5">
-      <div class="row">
-        <div class="col-md-6">
-          <h2 class="display-6 text-white fw-bold">Nuestra Trayectoria</h2>
-        </div>
-        <div class="col-md-6">
-          <p class="text-white-50">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-          <p class="text-white-50">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p class="text-white-50">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 3: Misión, Visión y Valores, tercera imagen de fondo distinta,
-       mismo patrón 100% Bootstrap de las dos secciones anteriores. -->
-  <section class="container-fluid position-relative py-5">
-    <img alt="" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" src="../assets/images/about-engineer-rack.jpg">
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-50"></div>
-    <div class="container position-relative z-2 py-5">
-      <div class="row">
-
-        <div class="col-md-4 text-center">
-          <div class="bg-primary text-white p-3 mb-3 rounded">
-            <h3 class="h5 text-white mb-0">Misión</h3>
-          </div>
-          <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <div class="bg-primary text-white p-3 mb-3 rounded">
-            <h3 class="h5 text-white mb-0">Visión</h3>
-          </div>
-          <p class="text-white">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <div class="bg-primary text-white p-3 mb-3 rounded">
-            <h3 class="h5 text-white mb-0">Valores</h3>
-          </div>
-          <p class="text-white">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección 4: clientes principales, carrusel de solo texto en bucle cada
-       3000ms (tiempo suficiente para leer cada nombre). No se agregan
-       controles (carousel-control-prev/next) ni indicadores: al no
-       incluirlos en el markup no hace falta ocultarlos con CSS, es la forma
-       nativa de Bootstrap de no mostrarlos. -->
-  <section class="bg-light py-5 text-dark">
+  <!-- 2. Nuestra Esencia (perfil corporativo, solo clases de Bootstrap) -->
+  <section class="py-5">
     <div class="container">
-      <h2 class="text-center mb-4 fw-bold">CLIENTES PRINCIPALES</h2>
-      <div class="carousel slide" data-bs-ride="carousel" id="clientesCarousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="3000">
-            <h3 class="text-center py-4">Cliente 1</h3>
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <h3 class="text-center py-4">Cliente 2</h3>
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <h3 class="text-center py-4">Cliente 3</h3>
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <h3 class="text-center py-4">Cliente 4</h3>
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <h3 class="text-center py-4">Cliente 5</h3>
-          </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <h3 class="text-center py-4">Cliente 6</h3>
+      <div class="row align-items-center g-5">
+        <div class="col-md-6">
+          <h2 class="mb-4">Nuestra Esencia</h2>
+          <p>En Ignosi ofrecemos soluciones innovadoras, alineando las Tecnologías de Información con los objetivos del negocio  para impulsar el crecimiento y desarrollo de nuestros clientes, así como a lograr la excelencia operativa.</p>
+          <p class="mb-0">Contamos con un grupo de consultores con amplia experiencia en las diferentes áreas de TI, quienes se encuentran dispuestos a compartir sus conocimientos con nuestros clientes con el fin de mejorar tanto su infraestructura tecnológica como sus procesos de negocio.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="bg-light border rounded w-100 d-flex align-items-center justify-content-center" style="height:350px;">
+            <span class="text-muted">[Imagen Corporativa / Ingenieros]</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 3. Misión, Visión y Valores (tarjetas, solo clases de Bootstrap) -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-0">Nuestro ADN</h2>
+
+      <div class="row">
+
+        <div class="col-md-4 mt-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold mb-3">Misión</h5>
+              <p class="card-text text-muted mb-0">Brindar soluciones integrales en tecnologías de la información, seguridad y telecomunicaciones; diseñando e implementando infraestructuras robustas y eficientes que garanticen la continuidad y el crecimiento operativo de nuestros clientes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold mb-3">Visión</h5>
+              <p class="card-text text-muted mb-0">Consolidarnos como el aliado tecnológico más confiable y referente en el mercado, reconocidos por nuestra capacidad de innovación, excelencia técnica y compromiso inquebrantable con el éxito de cada proyecto.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <h5 class="card-title fw-bold mb-3">Valores</h5>
+              <p class="card-text text-muted mb-0">
+                • Innovación: Adoptamos tecnología de vanguardia.<br>
+                • Calidad: Nos comprometemos con la excelencia en cada proyecto.<br>
+                • Integridad: Actuamos con ética y transparencia.<br>
+                • Colaboración: Fomentamos el trabajo en equipo y las alianzas estratégicas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Clientes y Aliados Tecnológicos (dos carruseles nativos de Bootstrap
+       moviéndose en direcciones opuestas). El carrusel de Clientes usa el
+       autoplay nativo de Bootstrap (data-bs-ride + data-bs-interval), que solo
+       avanza "hacia adelante" (next). Como Bootstrap no tiene una opción nativa
+       de reversa, el carrusel de Aliados se inicializa sin autoplay propio
+       (ver script al final del body) y un pequeño Vanilla JS lo hace retroceder
+       (carousel.prev()) en su propio intervalo, para lograr el efecto visual
+       de direcciones opuestas pedido. -->
+  <section class="container-fluid py-5 bg-light overflow-hidden">
+
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center mb-4">Nuestros Clientes Principales</h2>
+        <div class="carousel slide mx-auto" data-bs-interval="1000" data-bs-ride="carousel" id="clientesCarousel" style="max-width:360px;">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Logo Cliente 1</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Logo Cliente 2</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Logo Cliente 3</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Logo Cliente 4</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Logo Cliente 5</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Logo Cliente 6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-12">
+        <h2 class="text-center mb-4">Nuestros Aliados Tecnológicos</h2>
+        <!-- Sin data-bs-ride/data-bs-interval a propósito: el avance en reversa
+             de este carrusel lo controla el script del final del body, no el
+             autoplay nativo de Bootstrap (ver comentario arriba de la sección). -->
+        <div class="carousel slide mx-auto" id="aliadosCarousel" style="max-width:360px;">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 1</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 2</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 3</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 4</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 5</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 6</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 7</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 8</span>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
+                <span class="text-muted">Grupo Logos 9</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- 5. Call to Action (cierre, solo clases de Bootstrap) -->
+  <section class="bg-primary text-white py-5 text-center">
+    <div class="container">
+      <h2 class="mb-3">¿Listo para modernizar tu infraestructura?</h2>
+      <a class="btn btn-light btn-lg mt-3" href="../contacto/">Habla con un experto</a>
     </div>
   </section>
 
@@ -120,5 +209,23 @@
 
   <script src="../js/vendor/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
+
+  <!-- Vanilla JS exclusivo de esta página: Bootstrap Carousel no tiene una
+       opción nativa para autoavanzar en reversa, así que el carrusel de
+       Aliados (sin data-bs-ride) se instancia manualmente y se retrocede
+       con carousel.prev() en su propio intervalo, para que se mueva en
+       dirección opuesta al carrusel de Clientes (que sí usa el autoplay
+       nativo de Bootstrap hacia adelante). -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var aliadosEl = document.getElementById('aliadosCarousel');
+      if (aliadosEl) {
+        var aliadosCarousel = new bootstrap.Carousel(aliadosEl, { interval: false, ride: false, wrap: true });
+        setInterval(function () {
+          aliadosCarousel.prev();
+        }, 1500);
+      }
+    });
+  </script>
 </body>
 </html>
