@@ -13,12 +13,14 @@ y este proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 - **`assets/images/service-seguridad-electronica.png`**: render 3D de sistema CCTV y control de acceso para "Seguridad Electrónica" (Hikvision, Dahua, Bosch, ZKTeco).
 - **`assets/images/service-cableado-estructurado.png`**: render 3D de cableado estructurado para "Cableado Estructurado" (Panduit, Charofil, Linkedpro).
 - **`assets/images/service-servidores.png`**: render 3D de rack de servidores y virtualización para "Servidores" (APC, Tripp-Lite).
+- **`assets/images/service-cloud.png`**: render 3D de arquitectura de nube y respaldo para "Cloud" (Microsoft Azure, AWS, Veeam).
+- **`assets/images/service-equipo-computo.jpg`**: fotografía de hardware empresarial y periféricos para "Equipo de Cómputo y Accesorios" (Dell, HP, Lenovo, Logitech, Western Digital).
 - **Sistema de animación Scroll Reveal y Micro-interacciones en `css/styles.css` y `js/main.js`**: revelado progresivo y suave de elementos al hacer scroll con `IntersectionObserver` (`.ig-reveal`, `.ig-reveal-visible`), soporte de accesibilidad `prefers-reduced-motion` y elevación 3D en hover para las tarjetas de servicio (`.ig-service-media-card`).
 - **Componentes visuales tecnológicos animados por servicio**: tarjetas interactivas con animaciones CSS fluidas para los servicios restantes.
 
 ### Changed
-- **`servicios/index.html`**: integración de las imágenes oficiales en "Redes y Comunicaciones", "Seguridad Informática", "Seguridad Electrónica", "Cableado Estructurado" y "Servidores", con soporte completo de scroll reveal y hover interactivo.
-- **`index.html`**: actualización del icono del servicio "Redes y Comunicaciones" de `lan` a `schema` para total coherencia en todo el sitio.
+- **`servicios/index.html`**: integración de las imágenes oficiales en "Redes y Comunicaciones", "Seguridad Informática", "Seguridad Electrónica", "Cableado Estructurado", "Servidores", "Cloud" y "Equipo de Cómputo", con soporte completo de scroll reveal y hover interactivo.
+- **`index.html`**: actualización de los iconos de "Redes y Comunicaciones" a `schema` y "Equipo de Cómputo" a `laptop_chromebook` para total coherencia en todo el sitio.
 
 ### Changed
 - **Footer (`partials/footer.html`) rediseñado a 3 columnas** (antes 4): se eliminó por completo la columna "Legal" (título y enlace "Privacidad"). Las columnas principales pasaron de un grid uniforme (`row-cols-md-4`) a anchos explícitos para aprovechar el espacio liberado: Logo/Info `col-lg-4`, Servicios `col-lg-5`, Contacto `col-lg-3`. Dentro de "Servicios" se agregó un grid anidado (`row` con dos `col-6`) que reparte los 8 enlaces en dos subcolumnas de 4, reduciendo la altura vertical del footer.
