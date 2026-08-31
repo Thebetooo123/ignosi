@@ -8,6 +8,8 @@ Imágenes usadas por `index.html`, autoalojadas (ya no dependen de una CDN exter
 - `service-redes-comunicaciones.png` — render 3D isométrico de topología de red corporativa para la sección "Redes y Comunicaciones" (`servicios/index.html`).
 - `service-seguridad-informatica.png` — render 3D de cúpula de seguridad perimetral y escudos de protección para "Seguridad Informática" (`servicios/index.html`).
 - `service-seguridad-electronica.png` — render 3D isométrico de videovigilancia CCTV y control de acceso para "Seguridad Electrónica" (`servicios/index.html`).
+- `service-cableado-estructurado.png` — render 3D de cableado estructurado en data center para "Cableado Estructurado" (Panduit, Charofil, Linkedpro) (`servicios/index.html`).
+- `service-servidores.png` — render 3D de rack de servidores corporativo y virtualización para "Servidores" (APC, Tripp-Lite) (`servicios/index.html`).
 
 `hero-server-room-1.jpg` y `about-engineer-rack.jpg` se descargaron de las mismas URLs de `lh3.googleusercontent.com` que usaba la maqueta original (placeholders generados por la herramienta de diseño, 512×279px). Son de **baja resolución** para un fondo a pantalla completa — antes de producción hay que reemplazarlas por fotografía propia en mayor resolución, manteniendo estos mismos nombres de archivo (o actualizando las rutas `src` correspondientes en `index.html`).
 

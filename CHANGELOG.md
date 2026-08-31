@@ -11,11 +11,13 @@ y este proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 - **`assets/images/service-redes-comunicaciones.png`**: render 3D de alta calidad para la sección "Redes y Comunicaciones" (`servicios/index.html`), mostrando topología corporativa con nodos de Cisco, Aruba, Ubiquiti y TP-Link.
 - **`assets/images/service-seguridad-informatica.png`**: render 3D de cúpula de protección y escudos de seguridad para "Seguridad Informática" (Fortinet, Check Point, Kaspersky).
 - **`assets/images/service-seguridad-electronica.png`**: render 3D de sistema CCTV y control de acceso para "Seguridad Electrónica" (Hikvision, Dahua, Bosch, ZKTeco).
+- **`assets/images/service-cableado-estructurado.png`**: render 3D de cableado estructurado para "Cableado Estructurado" (Panduit, Charofil, Linkedpro).
+- **`assets/images/service-servidores.png`**: render 3D de rack de servidores y virtualización para "Servidores" (APC, Tripp-Lite).
 - **Sistema de animación Scroll Reveal y Micro-interacciones en `css/styles.css` y `js/main.js`**: revelado progresivo y suave de elementos al hacer scroll con `IntersectionObserver` (`.ig-reveal`, `.ig-reveal-visible`), soporte de accesibilidad `prefers-reduced-motion` y elevación 3D en hover para las tarjetas de servicio (`.ig-service-media-card`).
 - **Componentes visuales tecnológicos animados por servicio**: tarjetas interactivas con animaciones CSS fluidas para los servicios restantes.
 
 ### Changed
-- **`servicios/index.html`**: integración de las imágenes oficiales en "Redes y Comunicaciones", "Seguridad Informática" y "Seguridad Electrónica", con soporte completo de scroll reveal y hover interactivo.
+- **`servicios/index.html`**: integración de las imágenes oficiales en "Redes y Comunicaciones", "Seguridad Informática", "Seguridad Electrónica", "Cableado Estructurado" y "Servidores", con soporte completo de scroll reveal y hover interactivo.
 - **`index.html`**: actualización del icono del servicio "Redes y Comunicaciones" de `lan` a `schema` para total coherencia en todo el sitio.
 
 ### Changed
