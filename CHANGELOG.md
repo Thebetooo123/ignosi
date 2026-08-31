@@ -15,11 +15,11 @@ y este proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 - **`assets/images/service-servidores.png`**: render 3D de rack de servidores y virtualización para "Servidores" (APC, Tripp-Lite).
 - **`assets/images/service-cloud.png`**: render 3D de arquitectura de nube y respaldo para "Cloud" (Microsoft Azure, AWS, Veeam).
 - **`assets/images/service-equipo-computo.jpg`**: fotografía de hardware empresarial y periféricos para "Equipo de Cómputo y Accesorios" (Dell, HP, Lenovo, Logitech, Western Digital).
+- **`assets/images/service-soporte-tecnico.jpg`**: fotografía y visualización holográfica de operaciones NOC para "Soporte Técnico".
 - **Sistema de animación Scroll Reveal y Micro-interacciones en `css/styles.css` y `js/main.js`**: revelado progresivo y suave de elementos al hacer scroll con `IntersectionObserver` (`.ig-reveal`, `.ig-reveal-visible`), soporte de accesibilidad `prefers-reduced-motion` y elevación 3D en hover para las tarjetas de servicio (`.ig-service-media-card`).
-- **Componentes visuales tecnológicos animados por servicio**: tarjetas interactivas con animaciones CSS fluidas para los servicios restantes.
 
 ### Changed
-- **`servicios/index.html`**: integración de las imágenes oficiales en "Redes y Comunicaciones", "Seguridad Informática", "Seguridad Electrónica", "Cableado Estructurado", "Servidores", "Cloud" y "Equipo de Cómputo", con soporte completo de scroll reveal y hover interactivo.
+- **`servicios/index.html`**: integración del 100% de las imágenes oficiales para los 8 servicios (Redes y Comunicaciones, Seguridad Informática, Seguridad Electrónica, Cableado Estructurado, Servidores, Cloud, Equipo de Cómputo y Accesorios, Soporte Técnico), con soporte completo de scroll reveal y hover interactivo.
 - **`index.html`**: actualización de los iconos de "Redes y Comunicaciones" a `schema` y "Equipo de Cómputo" a `laptop_chromebook` para total coherencia en todo el sitio.
 
 ### Changed

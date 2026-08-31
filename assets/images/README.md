@@ -12,6 +12,7 @@ Imágenes usadas por `index.html`, autoalojadas (ya no dependen de una CDN exter
 - `service-servidores.png` — render 3D de rack de servidores corporativo y virtualización para "Servidores" (APC, Tripp-Lite) (`servicios/index.html`).
 - `service-cloud.png` — render 3D de transición e infraestructura híbrida multi-nube para "Cloud" (Microsoft Azure, AWS, Veeam) (`servicios/index.html`).
 - `service-equipo-computo.jpg` — fotografía y render de hardware corporativo y periféricos para "Equipo de Cómputo y Accesorios" (Dell, HP, Lenovo, Logitech, Western Digital) (`servicios/index.html`).
+- `service-soporte-tecnico.jpg` — fotografía y visualización holográfica de operaciones NOC para "Soporte Técnico" (`servicios/index.html`).
 
 `hero-server-room-1.jpg` y `about-engineer-rack.jpg` se descargaron de las mismas URLs de `lh3.googleusercontent.com` que usaba la maqueta original (placeholders generados por la herramienta de diseño, 512×279px). Son de **baja resolución** para un fondo a pantalla completa — antes de producción hay que reemplazarlas por fotografía propia en mayor resolución, manteniendo estos mismos nombres de archivo (o actualizando las rutas `src` correspondientes en `index.html`).
 
