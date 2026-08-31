@@ -19,7 +19,7 @@ y este proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 - **Sistema de animación Scroll Reveal y Micro-interacciones en `css/styles.css` y `js/main.js`**: revelado progresivo y suave de elementos al hacer scroll con `IntersectionObserver` (`.ig-reveal`, `.ig-reveal-visible`), soporte de accesibilidad `prefers-reduced-motion` y elevación 3D en hover para las tarjetas de servicio (`.ig-service-media-card`).
 
 ### Changed
-- **`servicios/index.html`**: integración del 100% de las imágenes oficiales para los 8 servicios (Redes y Comunicaciones, Seguridad Informática, Seguridad Electrónica, Cableado Estructurado, Servidores, Cloud, Equipo de Cómputo y Accesorios, Soporte Técnico), con soporte completo de scroll reveal y hover interactivo.
+- **`servicios/index.html` y `css/styles.css`**: integración del 100% de las imágenes oficiales para los 8 servicios con tarjetas homologadas en proporción uniforme 16:9 (`aspect-ratio: 16 / 9`), encuadre perfecto (`object-fit: cover; object-position: center`) y alturas idénticas para garantizar una simetría visual exacta entre todas las secciones.
 - **`index.html`**: actualización de los iconos de "Redes y Comunicaciones" a `schema` y "Equipo de Cómputo" a `laptop_chromebook` para total coherencia en todo el sitio.
 
 ### Changed
