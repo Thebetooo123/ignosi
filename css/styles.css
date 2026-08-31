@@ -267,3 +267,180 @@ body {
 .carousel-item.active .ig-hero-kenburns {
     animation: ig-hero-kenburns 9s ease-in-out forwards;
 }
+
+/* =========================================================
+   4) Animaciones y componentes visuales de Servicios
+   (Bootstrap 5.3 no provee scroll reveal, keyframes para efectos
+   tecnológicos ni elevación interactiva con sombras dinámicas).
+   ========================================================= */
+
+/* Revelado suave al hacer scroll (Scroll Reveal):
+   Permite que los bloques de servicios aparezcan de forma fluida
+   y elegante cuando entran al viewport (activado por IntersectionObserver). */
+.ig-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.ig-reveal.ig-reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ig-delay-1 { transition-delay: 0.12s; }
+.ig-delay-2 { transition-delay: 0.24s; }
+.ig-delay-3 { transition-delay: 0.36s; }
+
+/* Tarjeta contenedora de imagen/animación de servicio:
+   Proporciona bordes redondeados consistentes (12px), fondo sutil,
+   borde suave y elevación tridimensional interactiva al pasar el cursor. */
+.ig-service-media-card {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--ig-surface-container-lowest);
+    border: 1px solid var(--bs-border-color);
+    box-shadow: 0 4px 20px rgba(0, 52, 97, 0.05);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.35s ease;
+}
+
+.ig-service-media-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 52, 97, 0.12);
+    border-color: rgba(var(--ig-primary-rgb), 0.3);
+}
+
+/* Imagen dentro de la tarjeta de servicio con zoom sutil al hover */
+.ig-service-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ig-service-media-card:hover .ig-service-img {
+    transform: scale(1.02);
+}
+
+/* Contenedor gráfico interactivo para servicios con animación propia */
+.ig-service-graphic {
+    min-height: 320px;
+    background: linear-gradient(135deg, #f8fafd 0%, #eef4fa 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+/* Indicador de estado "en vivo" con pulso */
+.ig-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #10b981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: ig-pulse-green 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.ig-status-dot-rec {
+    background-color: #ef4444;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: ig-pulse-red 1.5s infinite;
+}
+
+@keyframes ig-pulse-green {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes ig-pulse-red {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.9); }
+}
+
+/* Animación de escaneo radar (Ciberseguridad / Soporte) */
+@keyframes ig-radar-sweep {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.ig-anim-radar {
+    animation: ig-radar-sweep 8s linear infinite;
+    transform-origin: center center;
+}
+
+/* Animación de resplandor de escudo (Seguridad Informática) */
+@keyframes ig-shield-glow {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 52, 97, 0.25)); }
+    50% { filter: drop-shadow(0 0 20px rgba(0, 52, 97, 0.6)); }
+}
+.ig-anim-shield {
+    animation: ig-shield-glow 3s ease-in-out infinite;
+}
+
+/* Animación de flotación suave (Cloud / Dispositivos) */
+@keyframes ig-float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+.ig-anim-float {
+    animation: ig-float-slow 4s ease-in-out infinite;
+}
+.ig-anim-float-reverse {
+    animation: ig-float-slow 4.5s ease-in-out infinite reverse;
+}
+
+/* Animación de flujo de datos y fibra óptica (Cableado / Redes) */
+@keyframes ig-flow-dash {
+    to { stroke-dashoffset: -40; }
+}
+.ig-anim-data-flow {
+    stroke-dasharray: 6, 6;
+    animation: ig-flow-dash 1.8s linear infinite;
+}
+
+/* Parpadeo de LEDs de servidor (Servidores) */
+@keyframes ig-led-blink {
+    0%, 100% { opacity: 0.3; }
+    20%, 80% { opacity: 1; }
+}
+.ig-led-1 { animation: ig-led-blink 1.2s infinite ease-in-out; }
+.ig-led-2 { animation: ig-led-blink 0.8s infinite ease-in-out 0.3s; }
+.ig-led-3 { animation: ig-led-blink 1.5s infinite ease-in-out 0.6s; }
+
+/* Onda de soporte NOC */
+@keyframes ig-wave-expand {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+.ig-anim-wave {
+    animation: ig-wave-expand 2.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+/* Respeto a preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .ig-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    .ig-anim-radar,
+    .ig-anim-shield,
+    .ig-anim-float,
+    .ig-anim-float-reverse,
+    .ig-anim-data-flow,
+    .ig-led-1, .ig-led-2, .ig-led-3,
+    .ig-anim-wave,
+    .ig-status-dot,
+    .ig-status-dot-rec {
+        animation: none !important;
+    }
+}
+

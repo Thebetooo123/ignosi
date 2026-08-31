@@ -18,23 +18,22 @@
   <div id="site-header"></div>
 
   <!-- Feature sections por servicio: una <section> amplia por servicio, grid 50/50
-       (texto + placeholder de imagen), alternando lado (Z-pattern, order-md-*) y
+       (texto + medios visuales interactivos/imágenes), alternando lado (Z-pattern, order-md-*) y
        fondo (bg-white/bg-light) para separarlas visualmente. Los id se mantienen
-       para las anclas que enlazan desde la grilla de servicios del Home. Solo
-       clases nativas de Bootstrap. -->
+       para las anclas que enlazan desde la grilla de servicios del Home. -->
 
   <!-- Servicio 1 (impar): texto izquierda, imagen derecha -->
   <section class="bg-white py-5 my-5" id="redes-comunicaciones">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6">
-          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">lan</span>
+        <div class="col-md-6 ig-reveal">
+          <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">schema</span>
           <h3 class="mb-3">Redes y Comunicaciones</h3>
           <p class="lead text-muted mb-0">Diseñamos e implementamos redes corporativas robustas y escalables. Trabajamos con líderes de la industria como Cisco, Aruba, Ubiquiti y TP-Link para garantizar conectividad ininterrumpida, alta velocidad y una gestión eficiente en cualquier entorno empresarial.</p>
         </div>
-        <div class="col-md-6">
-          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <img src="../assets/images/service-redes-comunicaciones.png" alt="Diseño de Redes y Comunicaciones con Cisco, Aruba, Ubiquiti y TP-Link" class="ig-service-img">
           </div>
         </div>
       </div>
@@ -45,14 +44,31 @@
   <section class="bg-light py-5 my-5" id="seguridad-informatica">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6 order-md-2">
+        <div class="col-md-6 order-md-2 ig-reveal">
           <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">shield_lock</span>
           <h3 class="mb-3">Seguridad Informática</h3>
           <p class="lead text-muted mb-0">Protegemos la integridad de su información y sus activos digitales contra amenazas cibernéticas. Mediante herramientas de nueva generación de firmas como Fortinet, Check Point y Kaspersky, aseguramos un perímetro impenetrable para su negocio.</p>
         </div>
-        <div class="col-md-6 order-md-1">
-          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 order-md-1 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <div class="ig-service-graphic">
+              <div class="position-relative d-flex align-items-center justify-content-center" style="width: 220px; height: 220px;">
+                <div class="position-absolute w-100 h-100 rounded-circle border border-primary border-opacity-25 ig-anim-radar" style="background: conic-gradient(from 0deg, rgba(0, 52, 97, 0.18) 0deg, transparent 90deg, transparent 360deg);"></div>
+                <div class="position-absolute rounded-circle border border-primary border-opacity-10" style="width: 70%; height: 70%;"></div>
+                <div class="position-absolute rounded-circle border border-primary border-opacity-10" style="width: 40%; height: 40%;"></div>
+                <div class="position-relative bg-white rounded-circle shadow p-3 d-flex align-items-center justify-content-center ig-anim-shield" style="width: 80px; height: 80px; z-index: 2;">
+                  <span class="material-symbols-outlined text-primary" style="font-size:44px;">shield</span>
+                </div>
+              </div>
+              <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="ig-status-dot"></span>
+                <span class="small fw-semibold text-dark">Perímetro Activo</span>
+              </div>
+              <div class="position-absolute bottom-0 end-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-size:16px;">lock</span>
+                <span class="small text-muted">Cifrado AES-256</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -63,14 +79,33 @@
   <section class="bg-white py-5 my-5" id="seguridad-electronica">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6">
+        <div class="col-md-6 ig-reveal">
           <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">videocam</span>
           <h3 class="mb-3">Seguridad Electrónica</h3>
           <p class="lead text-muted mb-0">Mantenemos el control total y la vigilancia de sus instalaciones. Integramos sistemas avanzados de videovigilancia y control de acceso con marcas premium como Hikvision, Dahua, Bosch y ZKTeco, brindando tranquilidad las 24 horas.</p>
         </div>
-        <div class="col-md-6">
-          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <div class="ig-service-graphic">
+              <div class="position-relative d-flex align-items-center justify-content-center" style="width: 220px; height: 220px;">
+                <div class="position-absolute top-0 start-0 border-top border-start border-2 border-primary" style="width: 28px; height: 28px;"></div>
+                <div class="position-absolute top-0 end-0 border-top border-end border-2 border-primary" style="width: 28px; height: 28px;"></div>
+                <div class="position-absolute bottom-0 start-0 border-bottom border-start border-2 border-primary" style="width: 28px; height: 28px;"></div>
+                <div class="position-absolute bottom-0 end-0 border-bottom border-end border-2 border-primary" style="width: 28px; height: 28px;"></div>
+                
+                <div class="position-relative bg-white rounded-circle shadow p-3 d-flex align-items-center justify-content-center ig-anim-float" style="width: 86px; height: 86px; z-index: 2;">
+                  <span class="material-symbols-outlined text-primary" style="font-size:48px;">nest_cam_iq_outdoor</span>
+                </div>
+              </div>
+              <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="ig-status-dot-rec"></span>
+                <span class="small fw-semibold text-danger">LIVE REC</span>
+              </div>
+              <div class="position-absolute bottom-0 end-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-size:16px;">sensor_occupied</span>
+                <span class="small text-muted">Control 24/7</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -81,14 +116,45 @@
   <section class="bg-light py-5 my-5" id="cableado-estructurado">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6 order-md-2">
+        <div class="col-md-6 order-md-2 ig-reveal">
           <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">cable</span>
           <h3 class="mb-3">Cableado Estructurado</h3>
           <p class="lead text-muted mb-0">Construimos la columna vertebral de su infraestructura TI. Realizamos el diseño e implementación de cableado bajo normativas internacionales, utilizando materiales de máxima calidad de Panduit, Charofil y Linkedpro para un rendimiento óptimo.</p>
         </div>
-        <div class="col-md-6 order-md-1">
-          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 order-md-1 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <div class="ig-service-graphic">
+              <div class="position-relative d-flex align-items-center justify-content-center w-100" style="max-width: 280px; height: 200px;">
+                <svg class="w-100 h-100" viewBox="0 0 280 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M30 90 H250" stroke="#c2c6d1" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M30 50 H140 V130 H250" stroke="#c2c6d1" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M30 130 H140 V50 H250" stroke="#c2c6d1" stroke-width="2" stroke-linecap="round"/>
+                  
+                  <path class="ig-anim-data-flow" d="M30 90 H250" stroke="#003461" stroke-width="2.5" stroke-linecap="round"/>
+                  <path class="ig-anim-data-flow" d="M30 50 H140 V130 H250" stroke="#003461" stroke-width="2.5" stroke-linecap="round"/>
+                  <path class="ig-anim-data-flow" d="M30 130 H140 V50 H250" stroke="#003461" stroke-width="2.5" stroke-linecap="round"/>
+                  
+                  <circle cx="30" cy="50" r="7" fill="#003461"/>
+                  <circle cx="30" cy="90" r="7" fill="#003461"/>
+                  <circle cx="30" cy="130" r="7" fill="#003461"/>
+                  <circle cx="140" cy="90" r="11" fill="#003461"/>
+                  <circle cx="250" cy="50" r="7" fill="#003461"/>
+                  <circle cx="250" cy="90" r="7" fill="#003461"/>
+                  <circle cx="250" cy="130" r="7" fill="#003461"/>
+                </svg>
+                <div class="position-absolute bg-white rounded-circle shadow p-2 d-flex align-items-center justify-content-center ig-anim-float" style="width: 54px; height: 54px;">
+                  <span class="material-symbols-outlined text-primary" style="font-size:28px;">settings_ethernet</span>
+                </div>
+              </div>
+              <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="ig-status-dot"></span>
+                <span class="small fw-semibold text-dark">Cat 6A / Fibra Óptica</span>
+              </div>
+              <div class="position-absolute bottom-0 end-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-size:16px;">verified</span>
+                <span class="small text-muted">Certificación TIA/EIA</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -99,14 +165,53 @@
   <section class="bg-white py-5 my-5" id="servidores">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6">
+        <div class="col-md-6 ig-reveal">
           <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">dns</span>
           <h3 class="mb-3">Servidores</h3>
           <p class="lead text-muted mb-0">Optimizamos el procesamiento y almacenamiento de su empresa. Realizamos la instalación, configuración y virtualización de servidores físicos y virtuales, adaptando la capacidad de cómputo a las exigencias críticas de su operación diaria, respaldados por energía ininterrumpida de APC y Tripp-Lite.</p>
         </div>
-        <div class="col-md-6">
-          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <div class="ig-service-graphic">
+              <div class="bg-dark text-white rounded-3 p-3 shadow w-100" style="max-width: 320px;">
+                <div class="d-flex align-items-center justify-content-between p-2 mb-2 bg-secondary bg-opacity-25 rounded border border-secondary border-opacity-25">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="material-symbols-outlined fs-6 text-info">dns</span>
+                    <span class="small font-monospace" style="font-size:12px;">RACK-SRV-01</span>
+                  </div>
+                  <div class="d-flex gap-1">
+                    <span class="badge bg-success ig-led-1" style="width:7px;height:7px;padding:0;border-radius:50%;"></span>
+                    <span class="badge bg-success ig-led-2" style="width:7px;height:7px;padding:0;border-radius:50%;"></span>
+                    <span class="badge bg-info ig-led-3" style="width:7px;height:7px;padding:0;border-radius:50%;"></span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between p-2 mb-2 bg-secondary bg-opacity-25 rounded border border-secondary border-opacity-25">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="material-symbols-outlined fs-6 text-info">storage</span>
+                    <span class="small font-monospace" style="font-size:12px;">SAN-STORAGE-02</span>
+                  </div>
+                  <div class="d-flex gap-1">
+                    <span class="badge bg-success ig-led-2" style="width:7px;height:7px;padding:0;border-radius:50%;"></span>
+                    <span class="badge bg-success ig-led-3" style="width:7px;height:7px;padding:0;border-radius:50%;"></span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between p-2 bg-secondary bg-opacity-25 rounded border border-secondary border-opacity-25">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="material-symbols-outlined fs-6 text-warning">bolt</span>
+                    <span class="small font-monospace" style="font-size:12px;">UPS-APC-BACKUP</span>
+                  </div>
+                  <span class="badge bg-success ig-status-dot" style="width:6px;height:6px;"></span>
+                </div>
+              </div>
+              <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="ig-status-dot"></span>
+                <span class="small fw-semibold text-dark">Uptime 99.99%</span>
+              </div>
+              <div class="position-absolute bottom-0 end-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-size:16px;">memory</span>
+                <span class="small text-muted">Virtualización VMware</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -117,14 +222,36 @@
   <section class="bg-light py-5 my-5" id="cloud">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6 order-md-2">
+        <div class="col-md-6 order-md-2 ig-reveal">
           <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">cloud</span>
           <h3 class="mb-3">Cloud</h3>
           <p class="lead text-muted mb-0">Facilitamos su transición a la nube de forma segura y estructurada. Ofrecemos hospedaje, respaldo y migración en infraestructuras líderes a nivel global como Microsoft Azure y AWS, complementadas con soluciones de respaldo de Veeam.</p>
         </div>
-        <div class="col-md-6 order-md-1">
-          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 order-md-1 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <div class="ig-service-graphic">
+              <div class="position-relative d-flex align-items-center justify-content-center" style="width: 260px; height: 220px;">
+                <div class="bg-white rounded-circle shadow-lg p-3 d-flex align-items-center justify-content-center ig-anim-float" style="width: 86px; height: 86px; z-index: 3;">
+                  <span class="material-symbols-outlined text-primary" style="font-size:48px;">cloud_sync</span>
+                </div>
+                <div class="position-absolute top-0 start-0 bg-white rounded-3 shadow-sm px-3 py-2 border border-light-subtle d-flex align-items-center gap-2 ig-anim-float-reverse" style="z-index: 2;">
+                  <span class="material-symbols-outlined text-primary" style="font-size:18px;">cloud_queue</span>
+                  <span class="small fw-semibold">Azure</span>
+                </div>
+                <div class="position-absolute top-0 end-0 bg-white rounded-3 shadow-sm px-3 py-2 border border-light-subtle d-flex align-items-center gap-2 ig-anim-float-reverse" style="z-index: 2;">
+                  <span class="material-symbols-outlined text-primary" style="font-size:18px;">public</span>
+                  <span class="small fw-semibold">AWS</span>
+                </div>
+                <div class="position-absolute bottom-0 start-50 translate-middle-x bg-white rounded-3 shadow-sm px-3 py-2 border border-light-subtle d-flex align-items-center gap-2 ig-anim-float" style="z-index: 2;">
+                  <span class="material-symbols-outlined text-success" style="font-size:18px;">backup</span>
+                  <span class="small fw-semibold">Veeam Backup</span>
+                </div>
+              </div>
+              <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="ig-status-dot"></span>
+                <span class="small fw-semibold text-dark">Multi-Cloud Híbrida</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -135,14 +262,34 @@
   <section class="bg-white py-5 my-5" id="equipo-computo">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6">
+        <div class="col-md-6 ig-reveal">
           <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">computer</span>
           <h3 class="mb-3">Equipo de Cómputo y Accesorios</h3>
           <p class="lead text-muted mb-0">Proveemos a su equipo con las mejores herramientas del mercado. Distribuimos equipos de cómputo y periféricos de marcas top como Dell, HP, Lenovo, Western Digital y Logitech, asegurando durabilidad y rendimiento operativo.</p>
         </div>
-        <div class="col-md-6">
-          <div class="bg-light border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <div class="ig-service-graphic">
+              <div class="position-relative d-flex align-items-center justify-content-center" style="width: 260px; height: 200px;">
+                <div class="bg-white rounded-3 shadow p-4 text-center border border-light-subtle ig-anim-float" style="width: 220px;">
+                  <span class="material-symbols-outlined text-primary mb-2" style="font-size:48px;">desktop_windows</span>
+                  <div class="progress mb-2" style="height: 6px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 88%;"></div>
+                  </div>
+                  <div class="d-flex justify-content-between text-muted" style="font-size: 11px;">
+                    <span>Rendimiento TI</span>
+                    <span class="text-success fw-semibold">Óptimo</span>
+                  </div>
+                </div>
+              </div>
+              <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="ig-status-dot"></span>
+                <span class="small fw-semibold text-dark">Línea Empresarial</span>
+              </div>
+              <div class="position-absolute bottom-0 end-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="small text-muted">Dell · HP · Lenovo · Logitech</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -153,14 +300,31 @@
   <section class="bg-light py-5 my-5" id="soporte-tecnico">
     <div class="container">
       <div class="row align-items-center g-5">
-        <div class="col-md-6 order-md-2">
+        <div class="col-md-6 order-md-2 ig-reveal">
           <span class="material-symbols-outlined text-primary mb-3" style="font-size:56px;">support_agent</span>
           <h3 class="mb-3">Soporte Técnico</h3>
           <p class="lead text-muted mb-0">Brindamos asistencia técnica especializada para mantener la continuidad de su negocio. Nuestro equipo ofrece soporte remoto o en sitio, resolviendo incidencias rápidamente y asegurando que su infraestructura tecnológica opere sin contratiempos.</p>
         </div>
-        <div class="col-md-6 order-md-1">
-          <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:300px;">
-            <span class="text-muted">Espacio para Imagen/Animación</span>
+        <div class="col-md-6 order-md-1 ig-reveal ig-delay-1">
+          <div class="ig-service-media-card">
+            <div class="ig-service-graphic">
+              <div class="position-relative d-flex align-items-center justify-content-center" style="width: 220px; height: 220px;">
+                <div class="position-absolute w-100 h-100 rounded-circle border border-primary border-opacity-25 ig-anim-wave"></div>
+                <div class="position-absolute rounded-circle border border-primary border-opacity-25 ig-anim-wave" style="width: 70%; height: 70%; animation-delay: 0.8s;"></div>
+                
+                <div class="position-relative bg-white rounded-circle shadow p-3 d-flex align-items-center justify-content-center ig-anim-shield" style="width: 86px; height: 86px; z-index: 2;">
+                  <span class="material-symbols-outlined text-primary" style="font-size:48px;">headset_mic</span>
+                </div>
+              </div>
+              <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="ig-status-dot"></span>
+                <span class="small fw-semibold text-dark">Soporte Remoto & En Sitio</span>
+              </div>
+              <div class="position-absolute bottom-0 end-0 m-3 px-3 py-1 bg-white bg-opacity-90 rounded-pill shadow-sm border border-light-subtle d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined text-success" style="font-size:16px;">bolt</span>
+                <span class="small text-muted">SLA Inmediato</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -174,3 +338,4 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
+

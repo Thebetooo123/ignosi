@@ -8,7 +8,13 @@ y este proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 ## [Sin publicar]
 
 ### Added
-- `servicios/index.html`: nueva página con el detalle de los 8 servicios (Redes y Comunicaciones, Seguridad Informática, Seguridad Electrónica, Cableado Estructurado, Servidores, Cloud, Equipo de Cómputo y Accesorios, Soporte Técnico), cada uno en su propia fila con `id` (p. ej. `id="redes-comunicaciones"`) para poder enlazarse por ancla desde la grilla de servicios del Home. Solo clases nativas de Bootstrap, comparte header/footer globales vía `partials/` igual que `contacto/index.html` y `quienes-somos/index.html`. Vive en su propia carpeta (`/servicios`) por la misma razón de URL limpia que las demás páginas secundarias.
+- **`assets/images/service-redes-comunicaciones.png`**: render 3D de alta calidad para la sección "Redes y Comunicaciones" (`servicios/index.html`), mostrando topología corporativa con nodos de Cisco, Aruba, Ubiquiti y TP-Link.
+- **Sistema de animación Scroll Reveal y Micro-interacciones en `css/styles.css` y `js/main.js`**: revelado progresivo y suave de elementos al hacer scroll con `IntersectionObserver` (`.ig-reveal`, `.ig-reveal-visible`), soporte de accesibilidad `prefers-reduced-motion` y elevación 3D en hover para las tarjetas de servicio (`.ig-service-media-card`).
+- **Componentes visuales tecnológicos animados por servicio**: tarjetas interactivas con animaciones CSS fluidas (radar de ciberseguridad, retícula CCTV con indicador LIVE REC, flujo luminoso en fibra óptica y cableado, rack con LEDs parpadeantes y telemetría de servidores, ecosistema multi-cloud flotante, diagnóstico de hardware y radar de soporte técnico NOC).
+
+### Changed
+- **`servicios/index.html`**: integración de la imagen real en "Redes y Comunicaciones", actualización del icono a `schema` (coincidiendo con la maqueta aprobada) y adición de las tarjetas visuales animadas en los 8 servicios.
+- **`index.html`**: actualización del icono del servicio "Redes y Comunicaciones" de `lan` a `schema` para total coherencia en todo el sitio.
 
 ### Changed
 - **Footer (`partials/footer.html`) rediseñado a 3 columnas** (antes 4): se eliminó por completo la columna "Legal" (título y enlace "Privacidad"). Las columnas principales pasaron de un grid uniforme (`row-cols-md-4`) a anchos explícitos para aprovechar el espacio liberado: Logo/Info `col-lg-4`, Servicios `col-lg-5`, Contacto `col-lg-3`. Dentro de "Servicios" se agregó un grid anidado (`row` con dos `col-6`) que reparte los 8 enlaces en dos subcolumnas de 4, reduciendo la altura vertical del footer.

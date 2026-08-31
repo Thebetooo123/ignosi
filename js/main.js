@@ -40,3 +40,38 @@ async function loadPartial(containerId, partialFile) {
 
 loadPartial('site-header', 'partials/header.html');
 loadPartial('site-footer', 'partials/footer.html');
+
+/* Animaciones de revelado suave al hacer scroll (Scroll Reveal):
+   Detecta cuándo los elementos con clase .ig-reveal entran al viewport
+   y añade .ig-reveal-visible para disparar la transición CSS de forma fluida. */
+function initScrollReveal() {
+  const reveals = document.querySelectorAll('.ig-reveal');
+  if (!reveals.length) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('ig-reveal-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  } else {
+    // Fallback inmediato para navegadores antiguos
+    reveals.forEach(el => el.classList.add('ig-reveal-visible'));
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initScrollReveal);
+} else {
+  initScrollReveal();
+}
+
