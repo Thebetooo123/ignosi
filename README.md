@@ -52,7 +52,7 @@ Luego visita `http://localhost:8000` (o el puerto que indique la herramienta ele
 
 ## Notas
 
-- Las imágenes (`assets/images/hero-server-room.jpg`, `assets/images/about-engineer-rack.jpg`) son las mismas de la maqueta original, ya descargadas, pero siguen siendo de baja resolución (512×279px, pensadas como *placeholder*); antes de producción deben reemplazarse por fotografía propia (ver [assets/images/README.md](assets/images/README.md)).
+- La imagen `assets/images/about-engineer-rack.jpg` es la misma de la maqueta original, ya descargada, pero sigue siendo de baja resolución (512×279px, pensada como *placeholder*); antes de producción debe reemplazarse por fotografía propia (ver [assets/images/README.md](assets/images/README.md)).
 - `Ejemplo.html` se conserva como referencia de la maqueta original en Tailwind, previa a la división en `index.html` + `css/` + `js/` y a la migración a Bootstrap.
 - La carpeta `bootstrap-5.3.8-dist/` (el ZIP de distribución oficial) ya no es necesaria: los únicos archivos que el sitio usa (`bootstrap.min.css` y `bootstrap.bundle.min.js`, con sus `.map`) ya están copiados en `css/vendor/` y `js/vendor/`. Puede eliminarse con seguridad.
 - Los archivos `.map` (`*.min.css.map`, `*.min.js.map`) son mapas de código fuente para depurar en DevTools; no los carga el navegador salvo que se abran las herramientas de desarrollo, así que tampoco cuentan como "links a internet" — son locales igual que el resto.

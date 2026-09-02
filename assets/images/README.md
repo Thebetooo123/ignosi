@@ -2,8 +2,10 @@
 
 Imágenes usadas por `index.html`, autoalojadas (ya no dependen de una CDN externa):
 
-- `hero-server-room-1.jpg` a `hero-server-room-4.jpg` — slides del carrusel de fondo del hero (`#heroCarousel`). Solo `hero-server-room-1.jpg` existe por ahora (renombrada desde `hero-server-room.jpg`); `-2.jpg`, `-3.jpg` y `-4.jpg` están referenciadas en `index.html` pendientes de subirse. Al agregarlas, actualizar también su `data-alt` correspondiente en `index.html` (hoy con un texto placeholder).
+- `hero_inicio.mp4` — video de fondo en loop del Hero principal de `index.html` (renombrado desde `convierte_la_imagen_en_un_vide.mp4`), reemplaza al antiguo carrusel de imágenes `hero-server-room-*.jpg` (eliminadas).
 - `about-engineer-rack.jpg` — fotografía de la sección "Acerca de".
+- `bg-diagram.jpg` — fondo oscuro tipo diagrama para la sección "Banner" intermedia de `index.html` (fondo fijo/parallax vía `.ig-banner-bg` en `css/styles.css`).
+- `bg-services.jpg` — fondo minimalista de la sección "Nuestros Servicios" de `index.html`, visible en los gutters entre las tarjetas del grid.
 - `logo-ignosi.png` — logo de la marca en el header (438×150px, con transparencia).
 - `service-redes-comunicaciones.png` — render 3D isométrico de topología de red corporativa para la sección "Redes y Comunicaciones" (`servicios/index.html`).
 - `service-seguridad-informatica.png` — render 3D de cúpula de seguridad perimetral y escudos de protección para "Seguridad Informática" (`servicios/index.html`).
@@ -14,6 +16,6 @@ Imágenes usadas por `index.html`, autoalojadas (ya no dependen de una CDN exter
 - `service-equipo-computo.jpg` — fotografía y render de hardware corporativo y periféricos para "Equipo de Cómputo y Accesorios" (Dell, HP, Lenovo, Logitech, Western Digital) (`servicios/index.html`).
 - `service-soporte-tecnico.jpg` — fotografía y visualización holográfica de operaciones NOC para "Soporte Técnico" (`servicios/index.html`).
 
-`hero-server-room-1.jpg` y `about-engineer-rack.jpg` se descargaron de las mismas URLs de `lh3.googleusercontent.com` que usaba la maqueta original (placeholders generados por la herramienta de diseño, 512×279px). Son de **baja resolución** para un fondo a pantalla completa — antes de producción hay que reemplazarlas por fotografía propia en mayor resolución, manteniendo estos mismos nombres de archivo (o actualizando las rutas `src` correspondientes en `index.html`).
+`about-engineer-rack.jpg` se descargó de la misma URL de `lh3.googleusercontent.com` que usaba la maqueta original (placeholder generado por la herramienta de diseño, 512×279px). Es de **baja resolución** — antes de producción hay que reemplazarla por fotografía propia en mayor resolución, manteniendo el mismo nombre de archivo (o actualizando la ruta `src` correspondiente en `index.html`).
 
 `logo-ignosi.png` se descargó del archivo de logo provisto por el usuario (`img1.wsimg.com`). En `index.html` se muestra con la clase `.ig-header-logo` (`css/styles.css`), que fija su alto a 40px manteniendo la proporción — es la única clase `ig-*` que usa el `<header>` (ver la excepción documentada en `CLAUDE.md`).

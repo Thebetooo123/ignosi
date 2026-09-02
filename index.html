@@ -17,30 +17,10 @@
   <!-- Header global: se inyecta desde partials/header.html vía js/main.js -->
   <div id="site-header"></div>
 
-  <!-- Hero Section (full bleed, texto centrado, fondo en carrusel con efecto Ken Burns) -->
-  <section class="position-relative d-flex align-items-center justify-content-center" style="min-height:800px;height:100vh;">
-    <div class="carousel slide carousel-fade position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel" data-bs-interval="6000" id="heroCarousel" style="z-index:0;">
-      <div class="carousel-inner h-100">
-
-        <div class="carousel-item active h-100">
-          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="A modern, high-tech server room with glowing blue led lights on dark server racks. Corporate tech aesthetic, clean lines, professional telecommunications infrastructure. Depth of field showing rows of equipment." src="./assets/images/hero-server-room-1.jpg">
-        </div>
-
-        <div class="carousel-item h-100">
-          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="Imagen." src="./assets/images/hero-server-room-2.jpg">
-        </div>
-
-        <div class="carousel-item h-100">
-          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="Imagen." src="./assets/images/hero-server-room-3.jpg">
-        </div>
-
-        <div class="carousel-item h-100">
-          <img alt="" class="d-block w-100 h-100 object-fit-cover ig-hero-kenburns" data-alt="Imagen." src="./assets/images/hero-server-room-4.jpg">
-        </div>
-
-      </div>
-    </div>
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-black" style="--bs-bg-opacity:.4;mix-blend-mode:multiply;z-index:1;"></div>
+  <!-- Hero Section (full bleed, texto centrado, video de fondo en loop con overlay para legibilidad) -->
+  <section class="position-relative overflow-hidden d-flex align-items-center justify-content-center" style="min-height:800px;height:100vh;">
+    <video autoplay loop muted playsinline src="./assets/images/hero_inicio.mp4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;"></video>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1;"></div>
     <div class="position-relative w-100 ig-container px-4 text-center" style="z-index:2;">
       <div class="mx-auto ig-mw-4xl d-flex flex-column align-items-center">
         <h1 class="ig-display ig-font-serif text-white mb-4">Tu aliado tecnológico</h1>
@@ -51,13 +31,17 @@
     </div>
   </section>
 
-  <!-- Intro Cards (grid de 3 columnas, solo clases de Bootstrap) -->
-  <section class="bg-white">
-    <div class="container py-5">
+  <!-- Intro Cards (grid de 3 columnas; superpuestas sobre el Hero vía
+       margen negativo + z-index, con fondo propio fusionado al Hero vía
+       degradado, y animación de elevación en hover. Únicas excepciones a
+       "solo Bootstrap nativo" en esta sección: ver .ig-overlap-mt-n80,
+       .ig-features-bg y .ig-hover-lift en css/styles.css. -->
+  <section class="ig-features-bg pb-5">
+    <div class="container position-relative z-3 ig-overlap-mt-n80 py-5">
       <div class="row justify-content-center text-center">
 
         <div class="col-md-4 mb-4 mb-md-0">
-          <div class="card h-100 border-0 shadow-sm">
+          <div class="card ig-hover-lift border-0 shadow-lg rounded-4 h-100">
             <div class="card-body d-flex flex-column align-items-center text-center p-4">
               <span class="material-symbols-outlined text-primary fs-1 mb-3">gpp_good</span>
               <h5 class="card-title fw-bold mb-3">Quiénes somos</h5>
@@ -67,7 +51,7 @@
         </div>
 
         <div class="col-md-4 mb-4 mb-md-0">
-          <div class="card h-100 border-0 shadow-sm">
+          <div class="card ig-hover-lift border-0 shadow-lg rounded-4 h-100">
             <div class="card-body d-flex flex-column align-items-center text-center p-4">
               <span class="material-symbols-outlined text-primary fs-1 mb-3">cable</span>
               <h5 class="card-title fw-bold mb-3">Servicios</h5>
@@ -77,7 +61,7 @@
         </div>
 
         <div class="col-md-4 mb-4 mb-md-0">
-          <div class="card h-100 border-0 shadow-sm">
+          <div class="card ig-hover-lift border-0 shadow-lg rounded-4 h-100">
             <div class="card-body d-flex flex-column align-items-center text-center p-4">
               <span class="material-symbols-outlined text-primary fs-1 mb-3">link</span>
               <h5 class="card-title fw-bold mb-3">Alianzas estratégicas</h5>
@@ -90,39 +74,53 @@
     </div>
   </section>
     
-  <!-- About Section (layout espacioso) -->
-  <section class="ig-section-py">
+  <!-- About Section (layout espacioso; fondo geométrico dorado fijo
+       -background-attachment:fixed-, continuo con la sección de tarjetas
+       de arriba aunque ambas sigan siendo <section> separadas sin
+       wrapper. Texto oscuro para contrastar contra el fondo claro. -->
+  <section class="ig-section-py ig-features-bg-plain">
     <div class="ig-container px-4">
-      <div class="row g-0 ig-gap-20 align-items-center flex-column flex-lg-row">
+      <!-- Tarjeta flotante: aísla el contenido del fondo geométrico fijo de la
+           section (ig-features-bg-plain) para que el texto siga siendo legible.
+           Degradado con dos paradas de color vía style="" porque Bootstrap no
+           trae una utilidad nativa de background-image/gradient. -->
+      <div class="p-4 p-md-5 rounded-4 shadow-lg" style="background:linear-gradient(to bottom, #ffffff 0%, #f7f0d6 100%);">
+        <div class="row g-0 ig-gap-20 align-items-center flex-column flex-lg-row">
 
-        <div class="col-lg text-center text-lg-start">
-          <h4 class="ig-label-caps ig-font-mono text-uppercase mb-3" style="color:var(--ig-primary);">Bienvenido a IGNOSI</h4>
-          <h2 class="ig-headline-md ig-font-serif mb-4">Estándares de calidad superior para infraestructura crítica</h2>
-          <p class="ig-body-lg ig-mw-2xl mx-auto mx-lg-0 mb-5">En IGNOSI, contamos con un grupo de consultores con amplia experiencia en las diferentes áreas de TI, quienes se encuentran dispuestos a compartir sus conocimientos con nuestros clientes con el fin de mejorar tanto su infraestructura tecnológica como sus procesos de negocio.</p>
-        </div>
-
-        <div class="col-lg w-100">
-          <div class="ratio rounded overflow-hidden" style="--bs-aspect-ratio:125%;background-color:var(--ig-surface-container-low);">
-            <img alt="" class="w-100 h-100 object-fit-cover ig-blend-luminosity" data-alt="A professional engineer in a pristine white hardhat and corporate attire inspecting a highly organized server rack with perfectly managed blue ethernet cables. Bright, clean, clinical lighting emphasizing technical precision." src="./assets/images/about-engineer-rack.jpg" style="opacity:.9;">
+          <div class="col-lg text-center text-lg-start">
+            <h4 class="ig-label-caps ig-font-mono text-uppercase mb-3 ps-2 fw-bold border-start border-3" style="color:#c59b27;border-color:#c59b27 !important;">Bienvenido a IGNOSI</h4>
+            <h2 class="ig-headline-md ig-font-serif mb-4">Estándares de calidad superior para infraestructura crítica</h2>
+            <p class="ig-body-lg ig-mw-2xl mx-auto mx-lg-0 mb-5 text-muted">En IGNOSI, contamos con un grupo de consultores con amplia experiencia en las diferentes áreas de TI, quienes se encuentran dispuestos a compartir sus conocimientos con nuestros clientes con el fin de mejorar tanto su infraestructura tecnológica como sus procesos de negocio.</p>
           </div>
-        </div>
 
+          <div class="col-lg w-100">
+            <div class="ratio rounded-4 shadow-sm overflow-hidden" style="--bs-aspect-ratio:125%;background-color:var(--ig-surface-container-low);">
+              <img alt="" class="w-100 h-100 object-fit-cover" data-alt="A professional engineer in a pristine white hardhat and corporate attire inspecting a highly organized server rack with perfectly managed blue ethernet cables. Bright, clean, clinical lighting emphasizing technical precision." src="./assets/images/about-engineer-rack.jpg" style="opacity:.9;">
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Banner -->
-  <section class="ig-py-24" style="background-color:var(--ig-surface-container-low);">
-    <div class="ig-container px-4 text-center">
-      <h2 class="ig-headline-md ig-font-serif mx-auto ig-mw-4xl mb-4" style="line-height:1.3;">
-        Innovamos contigo. Marcas líderes para soluciones tecnológicas de última generación.
+  <!-- Banner (fondo parallax oscuro, diagrama de la marca: background-
+       attachment:fixed vive en .ig-banner-bg por la misma razón que
+       .ig-features-bg/-plain arriba, ver css/styles.css) -->
+  <section class="position-relative overflow-hidden ig-py-24 ig-banner-bg">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(15, 32, 39, 0.7); z-index: 1;"></div>
+    <div class="position-relative ig-container px-4 text-center" style="z-index:2;">
+      <h2 class="ig-headline-md ig-font-serif mx-auto ig-mw-4xl mb-4 text-white" style="line-height:1.3;">
+        <span style="color:#c59b27;">Innovamos contigo.</span> Marcas líderes para soluciones tecnológicas de última generación.
       </h2>
       <hr class="mx-auto" style="width:3rem;border-color:var(--ig-outline-variant);">
     </div>
   </section>
 
-  <!-- Services Grid (tarjetas mínimas con divisiones de 1px vía bordes) -->
-  <section class="ig-section-py" id="servicios" style="background-color:var(--ig-surface-container-low);">
+  <!-- Services Grid (tarjetas Bootstrap con elevación en hover, ver
+       .ig-service-card-hover en css/styles.css; fondo minimalista
+       bg-services.jpg visible en los espacios entre tarjetas) -->
+  <section class="pt-4 pb-5" id="servicios" style="background-image:url('./assets/images/bg-services.jpg');background-size:cover;background-position:center;">
     <div class="ig-container px-4">
 
       <div class="text-center mb-5" style="margin-bottom:5rem !important;">
@@ -131,47 +129,79 @@
         <p class="ig-body-lg ig-mw-2xl mx-auto mb-0">Soluciones robustas diseñadas para la continuidad operativa de su empresa.</p>
       </div>
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-0 border-top border-start" style="--bs-border-opacity:.3;">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
         <!-- Service 1 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#redes-comunicaciones" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">schema</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Redes y Comunicaciones</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#redes-comunicaciones">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">schema</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Redes y Comunicaciones</h3>
+            </div>
+          </a>
+        </div>
         <!-- Service 2 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#seguridad-informatica" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">shield_lock</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Seguridad Informática</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#seguridad-informatica">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">shield_lock</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Seguridad Informática</h3>
+            </div>
+          </a>
+        </div>
         <!-- Service 3 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#seguridad-electronica" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">videocam</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Seguridad Electrónica</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#seguridad-electronica">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">videocam</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Seguridad Electrónica</h3>
+            </div>
+          </a>
+        </div>
         <!-- Service 4 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#cableado-estructurado" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">cable</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Cableado Estructurado</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#cableado-estructurado">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">cable</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Cableado Estructurado</h3>
+            </div>
+          </a>
+        </div>
         <!-- Service 5 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#servidores" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">dns</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Servidores</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#servidores">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">dns</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Servidores</h3>
+            </div>
+          </a>
+        </div>
         <!-- Service 6 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#cloud" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">cloud</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Cloud</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#cloud">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">cloud</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Cloud</h3>
+            </div>
+          </a>
+        </div>
         <!-- Service 7 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#equipo-computo" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">laptop_chromebook</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Equipo de Cómputo y Accesorios</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#equipo-computo">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">laptop_chromebook</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Equipo de Cómputo y Accesorios</h3>
+            </div>
+          </a>
+        </div>
         <!-- Service 8 -->
-        <a class="col border-end border-bottom p-5 d-flex flex-column align-items-center text-center ig-service-card text-decoration-none text-dark" href="./servicios/#soporte-tecnico" style="--bs-border-opacity:.3;background-color:var(--ig-surface-container-lowest);">
-          <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">support_agent</span>
-          <h3 class="ig-body-lg ig-font-serif mb-0">Soporte Técnico</h3>
-        </a>
+        <div class="col">
+          <a class="card h-100 shadow-sm border-0 text-decoration-none text-dark ig-service-card-hover" href="./servicios/#soporte-tecnico">
+            <div class="card-body d-flex flex-column align-items-center text-center p-5">
+              <span class="material-symbols-outlined mb-4" style="font-size:28px;color:var(--ig-on-surface-variant);">support_agent</span>
+              <h3 class="ig-body-lg ig-font-serif mb-0">Soporte Técnico</h3>
+            </div>
+          </a>
+        </div>
       </div>
 
     </div>

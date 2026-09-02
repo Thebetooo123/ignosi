@@ -194,6 +194,18 @@ body {
 .ig-py-24 { padding-block: 96px; }
 .ig-py-32 { padding-block: 128px; }
 
+/* Altura mínima al 50% del viewport: Bootstrap solo compila .min-vh-100
+   como utilidad lista para usar (.min-vh-25/50/75 existen en su código
+   fuente Sass, pero este proyecto no tiene build step para generarlas). */
+.ig-min-vh-50 { min-height: 50vh; }
+
+/* Margen negativo para superponer un bloque sobre la sección anterior:
+   Bootstrap solo genera utilidades .m*-n* (mt-n1..n5) cuando
+   $enable-negative-margins está activado en Sass; este build viene con
+   el valor por defecto (desactivado), así que no hay ninguna clase
+   .mt-n* disponible sin introducir un build step. */
+.ig-overlap-mt-n80 { margin-top: -80px; }
+
 /* row-gap/column-gap por encima de 3rem: las utilidades .gap-* de
    Bootstrap terminan en .gap-5 = 3rem (48px). */
 .ig-gap-16 { gap: 4rem; }  /* 64px, estadísticas de "Acerca de" */
@@ -209,15 +221,6 @@ body {
     background-position: center;
 }
 
-/* mix-blend-mode no tiene utilidad equivalente en Bootstrap. */
-.ig-blend-luminosity {
-    mix-blend-mode: luminosity;
-    transition: mix-blend-mode 0.7s ease, opacity 0.7s ease;
-}
-.ig-blend-luminosity:hover {
-    mix-blend-mode: normal;
-}
-
 /* Estados :hover: Bootstrap no genera variantes hover: para sus
    utilidades (a diferencia de Tailwind); se agrupan aquí las pocas
    reglas de hover que usa el diseño. */
@@ -228,11 +231,84 @@ body {
     color: #fff !important;
 }
 
-.ig-service-card {
-    transition: background-color 0.15s ease-in-out;
+/* Fondo compartido por "Tarjetas" y "Bienvenido a IGNOSI": Bootstrap no
+   tiene utilidades de background-image, de combinar linear-gradient() +
+   url(), ni de background-attachment (solo de color plano), así que se
+   resuelve con el shorthand `background` en clases ig-*. `background-
+   attachment: fixed` fija la imagen a la ventana (no a cada <section>),
+   por lo que ambas secciones -aunque siguen siendo <section> separadas en
+   el HTML, sin wrapper que las una- muestran la misma porción continua
+   del fondo, sin corte ni reinicio al pasar de una a otra. */
+.ig-features-bg,
+.ig-features-bg-plain {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
-.ig-service-card:hover {
-    background-color: var(--ig-surface-bright);
+/* Tarjetas: además del fondo, un degradado superior (mismo gris que
+   `.bg-dark` de Bootstrap) para fundirse con la parte inferior oscura del
+   Hero en vez de un corte duro. */
+.ig-features-bg {
+    background-image: linear-gradient(to bottom, rgba(33, 37, 41, 1) 0%, rgba(33, 37, 41, 0) 15%), url('../assets/images/bg-features.jpg');
+}
+/* "Bienvenido a IGNOSI": solo la imagen, sin degradado (no colinda con el
+   Hero, sino con la sección de tarjetas, que ya funde su propio borde). */
+.ig-features-bg-plain {
+    background-image: url('../assets/images/bg-features.jpg');
+}
+
+/* Banner intermedio: mismo caso (fondo fijo tipo parallax, imagen oscura
+   `bg-diagram.jpg`), clase propia porque comparte la limitación de arriba
+   pero es una imagen distinta a la de "Tarjetas"/"Bienvenido a IGNOSI". */
+.ig-banner-bg {
+    background-image: url('../assets/images/bg-diagram.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Fondo fijo de página completa (quienes-somos/index.html): mismo caso que
+   .ig-banner-bg de arriba (Bootstrap no tiene utilidades de background-image
+   / background-attachment), pero aplicado a <body> en vez de a una sola
+   <section>, para que el diagrama se vea como una única imagen fija detrás
+   de toda la página (temática inmersiva de infraestructura), no repetida o
+   cortada por sección. background-color de respaldo mientras carga la
+   imagen o si esta fallara. */
+.ig-page-bg-diagram {
+    background-image: url('../assets/images/bg-diagram.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #0f2027;
+}
+
+/* Elevación de tarjeta en hover (translateY + sombra progresiva):
+   Bootstrap no tiene una utilidad de "lift on hover", solo clases
+   estáticas de sombra (.shadow/.shadow-lg) sin transición ni cambio de
+   posición al pasar el cursor. */
+.ig-hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ig-hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+    cursor: pointer;
+}
+
+/* Elevación en hover de las tarjetas de "Nuestros Servicios": mismo caso
+   que .ig-hover-lift (Bootstrap no tiene utilidad de "lift on hover"),
+   clase separada porque este grid usa una elevación más sutil
+   (translateY(-8px) y sombra más suave) que las tarjetas de introducción. */
+.ig-service-card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ig-service-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .15) !important;
+    cursor: pointer;
 }
 
 /* Logo del header (assets/images/logo-ignosi.png, 438x150px): Bootstrap
@@ -252,20 +328,6 @@ body {
     .ig-header-logo {
         height: 80px;
     }
-}
-
-/* Efecto "Ken Burns" (zoom lento) del carrusel de fondo del hero:
-   Bootstrap no tiene utilidades de animación/transform ni @keyframes, así
-   que el zoom vive aquí. La regla se ata a ".carousel-item.active" (clase
-   que el propio JS de Bootstrap agrega/quita en cada slide) para que la
-   animación reinicie en scale(1) cada vez que una imagen vuelve a
-   mostrarse, en vez de quedar corriendo de forma continua. */
-@keyframes ig-hero-kenburns {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
-}
-.carousel-item.active .ig-hero-kenburns {
-    animation: ig-hero-kenburns 9s ease-in-out forwards;
 }
 
 /* =========================================================
