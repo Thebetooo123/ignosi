@@ -40,7 +40,7 @@ ignosi/
 │
 ├── css/
 │   ├── vendor/bootstrap.min.css    # Bootstrap 5.3.8 oficial, sin modificar
-│   ├── fonts.css                   # 23 @font-face autoalojados
+│   ├── fonts.css                   # 15 @font-face autoalojados
 │   └── styles.css                  # Tema de marca + utilidades propias .ig-*
 │
 ├── js/
@@ -48,7 +48,7 @@ ignosi/
 │   └── main.js                          # Inyección de partials + scroll reveal
 │
 ├── assets/
-│   ├── fonts/                  # 17 archivos .woff2
+│   ├── fonts/                  # 9 archivos .woff2
 │   └── images/                 # Imágenes .webp + videos .mp4 de fondo
 │
 ├── README.md
@@ -99,7 +99,7 @@ La identidad de marca no se aplica sobreescribiendo clases de Bootstrap, sino **
 
 ```css
 --bs-primary:   var(--ig-primary);      /* azul corporativo #003461 */
---bs-body-font-family: "Karla", sans-serif;
+--bs-body-font-family: var(--ig-font-base);   /* Karla */
 --bs-heading-color: var(--ig-on-surface);
 --bs-border-radius: 0.125rem;
 ```
@@ -119,11 +119,11 @@ Los tokens de marca están centralizados como variables propias y se reutilizan 
 
 ### Clases propias `ig-*`
 
-`css/styles.css` define 43 clases propias, todas con prefijo `ig-` y en `kebab-case`. Existen únicamente donde Bootstrap 5.3 no ofrece equivalente nativo:
+`css/styles.css` define 42 clases propias, todas con prefijo `ig-` y en `kebab-case`. Existen únicamente donde Bootstrap 5.3 no ofrece equivalente nativo:
 
 | Grupo | Clases | Por qué no lo cubre Bootstrap |
 |---|---|---|
-| Tipografía | `ig-display`, `ig-headline-md`, `ig-headline-sm`, `ig-label-caps`, `ig-body-lg`, `ig-font-serif`, `ig-font-mono` | La escala `.display-*`/`.fs-*` es fija y no coincide con los tamaños del diseño; no hay variable de fuente para encabezados en el CSS compilado |
+| Tipografía | `ig-display`, `ig-headline-md`, `ig-headline-sm`, `ig-label-caps`, `ig-body-lg`, `ig-font-mono` | La escala `.display-*`/`.fs-*` es fija y no coincide con los tamaños del diseño |
 | Layout | `ig-container`, `ig-mw-2xl`, `ig-mw-4xl`, `ig-min-vh-50`, `ig-overlap-mt-n80` | `.mw-*` solo existe en porcentajes; `.min-vh-50` y las utilidades de margen negativo requieren compilar Sass |
 | Espaciado | `ig-section-py`, `ig-py-24`, `ig-gap-20` | Las utilidades de Bootstrap topan en `3rem`; el diseño usa 64–120px |
 | Fondos | `ig-features-bg`, `ig-features-bg-plain`, `ig-banner-bg`, `ig-page-bg-diagram`, `ig-services-bg`, `ig-service-bg-odd`, `ig-service-bg-even` | No hay utilidades de `background-image` ni `background-attachment` |
@@ -191,7 +191,14 @@ Solo se usan `@media` propias donde el componente es a medida y Bootstrap no tie
 
 ### Tipografías autoalojadas
 
-Cuatro familias, **sin `<link>` a `fonts.googleapis.com`**: Karla (texto base), Playfair Display (serif de titulares), JetBrains Mono (etiquetas monoespaciadas) y Material Symbols Outlined (iconografía). Los 17 archivos `.woff2` viven en `assets/fonts/` y se declaran en `css/fonts.css`.
+**Karla es la tipografía única de todo el sitio.** Se asigna globalmente en `body` y en `--bs-body-font-family`, y todo el texto la hereda: no hay una familia distinta para titulares. Los encabezados llevan `font-family: inherit` explícito para que ninguna regla de Bootstrap los desvíe.
+
+Junto a ella conviven solo dos familias de uso acotado:
+
+- **JetBrains Mono** (`.ig-font-mono`) — exclusivamente en acentos técnicos en versalitas: el antetítulo "Bienvenido a IGNOSI" y los dos encabezados de columna del footer.
+- **Material Symbols Outlined** — el sistema de iconos (`.material-symbols-outlined`). **No debe tocarse**: alterar su `@font-face` o su `font-variation-settings` rompe la renderización de todos los iconos.
+
+Los 9 archivos `.woff2` viven en `assets/fonts/`, sin `<link>` a `fonts.googleapis.com`.
 
 Los iconos se usan como `<span class="material-symbols-outlined">nombre_del_icono</span>`.
 

@@ -74,6 +74,21 @@ Dentro de un partial, los `href`/`src` usan el token **`%BASE%`** (que `main.js`
 
 Consecuencia operativa: el sitio **debe servirse por HTTP** (`npx serve .`). Abrir los `.html` con doble clic (`file://`) deja la página sin header ni footer, porque `fetch()` está bloqueado por CORS.
 
+### Tipografía: solo Karla
+
+**Karla es la tipografía única del sitio.** Se asigna en `body { font-family: 'Karla', sans-serif; }` y en `--bs-body-font-family`; todo el texto la hereda. **No introducir una segunda familia para titulares** (el sitio usó Playfair Display y se eliminó justamente por generar inconsistencia entre páginas).
+
+Dos excepciones, ambas acotadas:
+
+- **`.ig-font-mono`** (JetBrains Mono): solo para acentos técnicos en versalitas. No extender su uso a texto corrido.
+- **`.material-symbols-outlined`**: es el sistema de iconos. **Nunca** modificar ni eliminar su `@font-face` en `css/fonts.css` ni su `font-variation-settings` en `css/styles.css` — rompe la renderización de todos los iconos del sitio.
+
+Prohibidos los `style="font-family: ..."` inline y las etiquetas `<style>` internas en el HTML.
+
+### Videos de fondo
+
+Toda etiqueta `<video>` debe llevar los cuatro atributos `autoplay loop muted playsinline`. Sin `muted` y sin `playsinline` (en minúsculas, sin guiones), iOS bloquea la reproducción automática. No ocultar ni condicionar los videos por CSS o JS en pantallas pequeñas.
+
 ### Imágenes: solo WebP
 
 Todas las imágenes del sitio están en `.webp`. Al agregar una imagen nueva: convertirla a `.webp` antes de commitearla, guardarla en `assets/images/` y referenciarla con la ruta relativa que corresponda. No introducir `.jpg`/`.png` nuevos.

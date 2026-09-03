@@ -18,7 +18,7 @@
     --ig-surface-container-low: #f8f9fa;
     --ig-footer-bg: #1a1a1a;
 
-    --ig-font-serif: "Playfair Display", serif;
+    --ig-font-base: "Karla", sans-serif;
     --ig-font-mono: "JetBrains Mono", monospace;
 
     --bs-primary: var(--ig-primary);
@@ -29,7 +29,7 @@
     --bs-link-hover-color: var(--ig-primary);
     --bs-link-hover-color-rgb: var(--ig-primary-rgb);
 
-    --bs-body-font-family: "Karla", sans-serif;
+    --bs-body-font-family: var(--ig-font-base);
     --bs-body-font-weight: 300;
     --bs-body-font-size: 1rem;
     --bs-body-line-height: 1.7;
@@ -56,8 +56,14 @@
 }
 
 body {
+    font-family: 'Karla', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
 }
 
 .material-symbols-outlined {
@@ -87,7 +93,6 @@ body {
     border-color: var(--ig-primary);
 }
 
-.ig-font-serif { font-family: var(--ig-font-serif); }
 .ig-font-mono { font-family: var(--ig-font-mono); }
 
 .ig-display {
