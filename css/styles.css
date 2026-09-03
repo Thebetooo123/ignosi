@@ -1,27 +1,11 @@
-/**
- * Tema y estilos propios de IGNOSI Networks sobre Bootstrap 5.3.
- *
- * La mayor parte del diseño se resuelve reasignando las variables CSS que
- * Bootstrap ya expone (--bs-primary, --bs-body-color, --bs-border-radius,
- * --bs-emphasis-color, --bs-heading-color, etc.), de modo que las clases
- * nativas de Bootstrap (text-primary, bg-primary, btn-primary, h1..h6,
- * .border, .rounded...) adopten automáticamente la identidad de marca sin
- * necesidad de CSS adicional.
- *
- * Las reglas al final del archivo (prefijo .ig-) cubren únicamente los
- * casos que Bootstrap 5.3 no resuelve con variables ni utilidades
- * (ver justificación en cada bloque).
- */
-
-/* =========================================================
-   1) Variables de tema — remapeo de la paleta/tipografía/radios
-   originales (antes definidos en js/tailwind.config.js) a las
-   variables CSS nativas de Bootstrap.
-   ========================================================= */
 :root {
-    /* Paleta de marca (tokens con nombre, para reutilizar en reglas .ig-*) */
     --ig-primary: #003461;
     --ig-primary-rgb: 0, 52, 97;
+    --ig-gold: #c59b27;
+    --ig-gold-rgb: 197, 155, 39;
+    --ig-navy: #0f2027;
+    --ig-navy-rgb: 15, 32, 39;
+    --ig-cream: #fcf8f2;
     --ig-on-surface: #1a1c1e;
     --ig-on-surface-rgb: 26, 28, 30;
     --ig-on-surface-variant: #424750;
@@ -32,13 +16,11 @@
     --ig-outline-variant-rgb: 194, 198, 209;
     --ig-surface-container-lowest: #ffffff;
     --ig-surface-container-low: #f8f9fa;
-    --ig-surface-bright: #f9f9fc;
     --ig-footer-bg: #1a1a1a;
 
     --ig-font-serif: "Playfair Display", serif;
     --ig-font-mono: "JetBrains Mono", monospace;
 
-    /* Bootstrap adopta la marca a través de sus propias variables */
     --bs-primary: var(--ig-primary);
     --bs-primary-rgb: var(--ig-primary-rgb);
     --bs-primary-text-emphasis: var(--ig-primary);
@@ -55,13 +37,10 @@
     --bs-body-color-rgb: var(--ig-on-surface-variant-rgb);
     --bs-body-bg: var(--ig-surface-container-lowest);
 
-    /* Texto de encabezados ("on-surface"): Bootstrap pinta h1..h6 con
-       var(--bs-heading-color), que por defecto hereda de emphasis-color */
     --bs-emphasis-color: var(--ig-on-surface);
     --bs-emphasis-color-rgb: var(--ig-on-surface-rgb);
     --bs-heading-color: var(--ig-on-surface);
 
-    /* Texto secundario/atenuado (p. ej. placeholders) = "outline" original */
     --bs-secondary-color: var(--ig-outline);
     --bs-secondary-color-rgb: var(--ig-outline-rgb);
 
@@ -74,81 +53,59 @@
 
     --bs-tertiary-bg: var(--ig-surface-container-low);
     --bs-tertiary-color: var(--ig-outline);
-
-    /* "gutter" original (24px) = mitad del gutter-x de Bootstrap, así
-       container/row quedan con el mismo padding lateral sin CSS extra */
-    --bs-gutter-x: 3rem;
 }
 
-/* =========================================================
-   2) Iconografía Material Symbols (sin relación con el framework CSS,
-   se mantiene igual que en la versión anterior).
-   ========================================================= */
-.material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-}
-
-/* Suavizado de fuente y color de selección de texto: Bootstrap no incluye
-   utilidades para -webkit-font-smoothing ni para ::selection. */
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
 ::selection {
     background-color: rgba(var(--ig-primary-rgb), 0.2);
 }
 
-/* El estado :focus de .form-control en Bootstrap añade un halo de color
-   (box-shadow); este diseño solo cambia el color del borde al enfocar. */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #050a14;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(var(--ig-gold-rgb), 0.4);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--ig-gold-rgb), 0.8);
+}
+
 .form-control:focus {
     box-shadow: none;
     border-color: var(--ig-primary);
 }
 
-/* =========================================================
-   3) Utilidades propias — cada bloque documenta por qué Bootstrap no
-   lo resuelve por sí solo.
-   ========================================================= */
-
-/* Bootstrap no expone una variable de "headings-font-family" en el CSS
-   compilado (solo existe a nivel Sass); la tipografía secundaria (serif)
-   se aplica por elemento, igual que hacía el original con font-serif. */
 .ig-font-serif { font-family: var(--ig-font-serif); }
 .ig-font-mono { font-family: var(--ig-font-mono); }
 
-/* Escala tipográfica a medida (display/headline/stat/label-caps/body-lg):
-   los tamaños de Bootstrap (.display-1..6, .fs-1..6, .lead) son una escala
-   fija que no coincide con los valores exactos de este diseño (tamaño +
-   line-height + letter-spacing específicos), así que se reproducen con
-   clases propias en vez de forzar la escala de Bootstrap a otros valores. */
 .ig-display {
     font-size: 40px;
     line-height: 1.2;
     font-weight: 400;
     letter-spacing: 0;
 }
-@media (min-width: 768px) {
-    .ig-display {
-        font-size: 64px;
-        line-height: 1.1;
-    }
-}
 
 .ig-headline-md {
-    font-size: 40px;
+    font-size: 28px;
     line-height: 1.3;
     font-weight: 400;
 }
 
 .ig-headline-sm {
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1.4;
-    font-weight: 400;
-}
-
-.ig-stat-number {
-    font-size: 56px;
-    line-height: 1;
     font-weight: 400;
 }
 
@@ -165,348 +122,209 @@ body {
     font-weight: 300;
 }
 
-/* Anchos máximos de bloques de texto (2xl/3xl/4xl): Bootstrap solo
-   trae utilidades de max-width en porcentaje (.mw-25/50/75/100), no una
-   escala en valores fijos de px/rem para controlar longitud de línea. */
-.ig-mw-2xl { max-width: 42rem; }  /* 672px */
-.ig-mw-3xl { max-width: 48rem; }  /* 768px */
-.ig-mw-4xl { max-width: 56rem; }  /* 896px */
+.ig-mw-2xl { max-width: 42rem; }
+.ig-mw-4xl { max-width: 56rem; }
 
-/* Ancho de contenedor principal (1280px): no coincide con ningún
-   breakpoint de .container-* de Bootstrap (xl=1140px, xxl=1320px), que
-   además solo son "current" a partir de su breakpoint. */
 .ig-container {
     max-width: 1280px;
     margin-inline: auto;
 }
 
-/* Separaciones de sección: las utilidades de espaciado de Bootstrap
-   terminan en $spacer*3 = 3rem (48px, .py-5); este diseño usa valores
-   mayores (64/96/120/128px) para distintas secciones. */
-.ig-section-py {
-    padding-block: 64px;
-}
-@media (min-width: 992px) {
-    .ig-section-py {
-        padding-block: 120px;
-    }
-}
-.ig-py-24 { padding-block: 96px; }
-.ig-py-32 { padding-block: 128px; }
-
-/* Altura mínima al 50% del viewport: Bootstrap solo compila .min-vh-100
-   como utilidad lista para usar (.min-vh-25/50/75 existen en su código
-   fuente Sass, pero este proyecto no tiene build step para generarlas). */
+.ig-section-py { padding-block: 64px; }
+.ig-py-24 { padding-block: 64px; }
+.ig-gap-20 { gap: 2rem; }
 .ig-min-vh-50 { min-height: 50vh; }
+.ig-overlap-mt-n80 { margin-top: -40px; }
 
-/* Margen negativo para superponer un bloque sobre la sección anterior:
-   Bootstrap solo genera utilidades .m*-n* (mt-n1..n5) cuando
-   $enable-negative-margins está activado en Sass; este build viene con
-   el valor por defecto (desactivado), así que no hay ninguna clase
-   .mt-n* disponible sin introducir un build step. */
-.ig-overlap-mt-n80 { margin-top: -80px; }
+.ig-text-gold { color: var(--ig-gold); }
+.ig-border-gold { border-color: var(--ig-gold) !important; }
 
-/* row-gap/column-gap por encima de 3rem: las utilidades .gap-* de
-   Bootstrap terminan en .gap-5 = 3rem (48px). */
-.ig-gap-16 { gap: 4rem; }  /* 64px, estadísticas de "Acerca de" */
-.ig-gap-20 { gap: 5rem; }  /* 80px, columnas de "Acerca de" */
-
-/* Imagen de fondo del hero: Bootstrap no incluye utilidades de
-   background-image / background-size / background-position (solo de
-   background-color), así que el "cover" + centrado necesita CSS propio.
-   La URL de la imagen se sigue inyectando inline vía style, como en el
-   original. */
-.ig-bg-cover {
-    background-size: cover;
-    background-position: center;
+.ig-rule {
+    width: 3rem;
+    border-color: var(--ig-outline-variant);
 }
 
-/* Estados :hover: Bootstrap no genera variantes hover: para sus
-   utilidades (a diferencia de Tailwind); se agrupan aquí las pocas
-   reglas de hover que usa el diseño. */
+.ig-service-icon {
+    font-size: 28px;
+    color: var(--ig-on-surface-variant);
+}
+.ig-service-icon-lg { font-size: 56px; }
+.ig-footer-icon {
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.ig-btn-gold {
+    --bs-btn-bg: var(--ig-gold);
+    --bs-btn-border-color: var(--ig-gold);
+    --bs-btn-hover-bg: #d4ac3e;
+    --bs-btn-hover-border-color: #d4ac3e;
+    --bs-btn-active-bg: #a67f1e;
+    --bs-btn-active-border-color: #a67f1e;
+    --bs-btn-focus-shadow-rgb: var(--ig-gold-rgb);
+}
+
 .ig-link-hover-white {
+    color: inherit;
     transition: color 0.15s ease-in-out;
 }
 .ig-link-hover-white:hover {
     color: #fff !important;
 }
 
-/* Fondo compartido por "Tarjetas" y "Bienvenido a IGNOSI": Bootstrap no
-   tiene utilidades de background-image, de combinar linear-gradient() +
-   url(), ni de background-attachment (solo de color plano), así que se
-   resuelve con el shorthand `background` en clases ig-*. `background-
-   attachment: fixed` fija la imagen a la ventana (no a cada <section>),
-   por lo que ambas secciones -aunque siguen siendo <section> separadas en
-   el HTML, sin wrapper que las una- muestran la misma porción continua
-   del fondo, sin corte ni reinicio al pasar de una a otra. */
 .ig-features-bg,
-.ig-features-bg-plain {
+.ig-features-bg-plain,
+.ig-banner-bg,
+.ig-page-bg-diagram,
+.ig-service-bg-odd,
+.ig-service-bg-even {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
-/* Tarjetas: además del fondo, un degradado superior (mismo gris que
-   `.bg-dark` de Bootstrap) para fundirse con la parte inferior oscura del
-   Hero en vez de un corte duro. */
+
 .ig-features-bg {
-    background-image: linear-gradient(to bottom, rgba(33, 37, 41, 1) 0%, rgba(33, 37, 41, 0) 15%), url('../assets/images/bg-features.jpg');
+    background-image: linear-gradient(to bottom, rgba(33, 37, 41, 1) 0%, rgba(33, 37, 41, 0) 15%), url('../assets/images/bg-features.webp');
 }
-/* "Bienvenido a IGNOSI": solo la imagen, sin degradado (no colinda con el
-   Hero, sino con la sección de tarjetas, que ya funde su propio borde). */
 .ig-features-bg-plain {
-    background-image: url('../assets/images/bg-features.jpg');
+    background-image: url('../assets/images/bg-features.webp');
 }
-
-/* Banner intermedio: mismo caso (fondo fijo tipo parallax, imagen oscura
-   `bg-diagram.jpg`), clase propia porque comparte la limitación de arriba
-   pero es una imagen distinta a la de "Tarjetas"/"Bienvenido a IGNOSI". */
-.ig-banner-bg {
-    background-image: url('../assets/images/bg-diagram.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-
-/* Fondo fijo de página completa (quienes-somos/index.html): mismo caso que
-   .ig-banner-bg de arriba (Bootstrap no tiene utilidades de background-image
-   / background-attachment), pero aplicado a <body> en vez de a una sola
-   <section>, para que el diagrama se vea como una única imagen fija detrás
-   de toda la página (temática inmersiva de infraestructura), no repetida o
-   cortada por sección. background-color de respaldo mientras carga la
-   imagen o si esta fallara. */
+.ig-banner-bg,
 .ig-page-bg-diagram {
-    background-image: url('../assets/images/bg-diagram.jpg');
+    background-image: url('../assets/images/bg-diagram.webp');
+}
+.ig-page-bg-diagram {
+    background-color: var(--ig-navy);
+}
+.ig-service-bg-odd {
+    background-image: url('../assets/images/bg-servicio-impar.webp');
+}
+.ig-service-bg-even {
+    background-image: url('../assets/images/bg-servicio-par.webp');
+}
+.ig-services-bg {
+    background-image: url('../assets/images/bg-services.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-color: #0f2027;
 }
 
-/* Elevación de tarjeta en hover (translateY + sombra progresiva):
-   Bootstrap no tiene una utilidad de "lift on hover", solo clases
-   estáticas de sombra (.shadow/.shadow-lg) sin transición ni cambio de
-   posición al pasar el cursor. */
-.ig-hover-lift {
+.ig-service-gradient-odd {
+    background: linear-gradient(135deg, var(--ig-cream) 40%, var(--ig-navy) 100%);
+}
+.ig-service-gradient-even {
+    background: linear-gradient(-135deg, #e6eff5 40%, var(--ig-gold) 100%);
+}
+
+.ig-service-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.ig-hover-lift,
+.ig-service-card-hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ig-hover-lift:hover,
+.ig-service-card-hover:hover {
+    cursor: pointer;
 }
 .ig-hover-lift:hover {
     transform: translateY(-10px);
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
-    cursor: pointer;
-}
-
-/* Elevación en hover de las tarjetas de "Nuestros Servicios": mismo caso
-   que .ig-hover-lift (Bootstrap no tiene utilidad de "lift on hover"),
-   clase separada porque este grid usa una elevación más sutil
-   (translateY(-8px) y sombra más suave) que las tarjetas de introducción. */
-.ig-service-card-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .ig-service-card-hover:hover {
     transform: translateY(-8px);
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, .15) !important;
-    cursor: pointer;
 }
 
-/* Logo del header (assets/images/logo-ignosi.png, 438x150px): Bootstrap
-   no tiene utilidades de alto en píxeles fijos (solo h-25/50/75/100 en
-   porcentaje, ni tampoco una versión "responsive" de esas), así que el
-   único gancho nativo sería img-fluid, que solo limita el ancho y dejaría
-   el logo a su alto original (150px). width:auto mantiene su proporción
-   original. Se reduce a 56px por debajo del breakpoint lg (mismo punto en
-   el que el navbar de Bootstrap colapsa a menú hamburguesa) para que el
-   logo no domine el espacio angosto del header en móvil, y crece a 80px
-   en pantallas lg+ para tener protagonismo visual en el navbar expandido. */
 .ig-header-logo {
-    height: 56px;
+    height: 48px;
     width: auto;
 }
-@media (min-width: 992px) {
-    .ig-header-logo {
-        height: 80px;
-    }
-}
 
-/* =========================================================
-   4) Animaciones y componentes visuales de Servicios
-   (Bootstrap 5.3 no provee scroll reveal, keyframes para efectos
-   tecnológicos ni elevación interactiva con sombras dinámicas).
-   ========================================================= */
-
-/* Revelado suave al hacer scroll (Scroll Reveal):
-   Permite que los bloques de servicios aparezcan de forma fluida
-   y elegante cuando entran al viewport (activado por IntersectionObserver). */
 .ig-reveal {
     opacity: 0;
     transform: translateY(28px);
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
-
 .ig-reveal.ig-reveal-visible {
     opacity: 1;
     transform: translateY(0);
 }
-
 .ig-delay-1 { transition-delay: 0.12s; }
-.ig-delay-2 { transition-delay: 0.24s; }
-.ig-delay-3 { transition-delay: 0.36s; }
 
-/* Tarjeta contenedora de imagen/animación de servicio:
-   Proporciona bordes redondeados consistentes (12px), fondo sutil,
-   borde suave y elevación tridimensional interactiva al pasar el cursor.
-   Funciona junto con .ratio .ratio-16x9 de Bootstrap para garantizar proporción exacta. */
-.ig-service-media-card {
-    position: relative;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    background: var(--ig-surface-container-lowest);
-    border: 1px solid var(--bs-border-color);
-    box-shadow: 0 4px 20px rgba(0, 52, 97, 0.05);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-                border-color 0.35s ease;
+@keyframes ig-marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
-
-.ig-service-media-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(0, 52, 97, 0.12);
-    border-color: rgba(var(--ig-primary-rgb), 0.3);
+.ig-marquee-shell {
+    height: 110px;
 }
-
-/* Imagen dentro de la tarjeta de servicio:
-   Ocupa exactamente el 100% de la tarjeta manteniendo su centro y
-   proporción uniforme sin distorsión (object-fit: cover), con zoom sutil al hover */
-.ig-service-img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.ig-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: ig-marquee-scroll 30s linear infinite;
 }
-
-.ig-service-media-card:hover .ig-service-img {
-    transform: scale(1.02);
+.ig-marquee-track:hover {
+    animation-play-state: paused;
 }
-
-/* Contenedor gráfico interactivo para servicios con animación propia */
-.ig-service-graphic {
-    min-height: 320px;
-    background: linear-gradient(135deg, #f8fafd 0%, #eef4fa 100%);
-    position: relative;
+.ig-marquee-reverse {
+    animation-direction: reverse;
+}
+.ig-marquee-item {
+    padding: 0 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
+}
+.ig-marquee-item img {
+    max-height: 48px;
+    width: auto;
+    object-fit: contain;
 }
 
-/* Indicador de estado "en vivo" con pulso */
-.ig-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-    background-color: #10b981;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-    animation: ig-pulse-green 2s infinite cubic-bezier(0.66, 0, 0, 1);
+@keyframes ig-btn-pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(var(--ig-gold-rgb), 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(var(--ig-gold-rgb), 0); }
+    100% { box-shadow: 0 0 0 0 rgba(var(--ig-gold-rgb), 0); }
+}
+.ig-btn-pulse {
+    animation: ig-btn-pulse-glow 2s infinite;
 }
 
-.ig-status-dot-rec {
-    background-color: #ef4444;
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-    animation: ig-pulse-red 1.5s infinite;
+@media (min-width: 768px) {
+    .ig-display {
+        font-size: 64px;
+        line-height: 1.1;
+    }
+    .ig-headline-md { font-size: 40px; }
+    .ig-headline-sm { font-size: 28px; }
+    .ig-service-img { height: 350px; }
+    .ig-marquee-shell { height: 150px; }
+    .ig-marquee-item { padding: 0 3rem; }
+    .ig-marquee-item img { max-height: 70px; }
 }
 
-@keyframes ig-pulse-green {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+@media (min-width: 992px) {
+    .ig-section-py { padding-block: 120px; }
+    .ig-py-24 { padding-block: 96px; }
+    .ig-gap-20 { gap: 5rem; }
+    .ig-overlap-mt-n80 { margin-top: -80px; }
+    .ig-header-logo { height: 80px; }
 }
 
-@keyframes ig-pulse-red {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(0.9); }
-}
-
-/* Animación de escaneo radar (Ciberseguridad / Soporte) */
-@keyframes ig-radar-sweep {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-.ig-anim-radar {
-    animation: ig-radar-sweep 8s linear infinite;
-    transform-origin: center center;
-}
-
-/* Animación de resplandor de escudo (Seguridad Informática) */
-@keyframes ig-shield-glow {
-    0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 52, 97, 0.25)); }
-    50% { filter: drop-shadow(0 0 20px rgba(0, 52, 97, 0.6)); }
-}
-.ig-anim-shield {
-    animation: ig-shield-glow 3s ease-in-out infinite;
-}
-
-/* Animación de flotación suave (Cloud / Dispositivos) */
-@keyframes ig-float-slow {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-7px); }
-}
-.ig-anim-float {
-    animation: ig-float-slow 4s ease-in-out infinite;
-}
-.ig-anim-float-reverse {
-    animation: ig-float-slow 4.5s ease-in-out infinite reverse;
-}
-
-/* Animación de flujo de datos y fibra óptica (Cableado / Redes) */
-@keyframes ig-flow-dash {
-    to { stroke-dashoffset: -40; }
-}
-.ig-anim-data-flow {
-    stroke-dasharray: 6, 6;
-    animation: ig-flow-dash 1.8s linear infinite;
-}
-
-/* Parpadeo de LEDs de servidor (Servidores) */
-@keyframes ig-led-blink {
-    0%, 100% { opacity: 0.3; }
-    20%, 80% { opacity: 1; }
-}
-.ig-led-1 { animation: ig-led-blink 1.2s infinite ease-in-out; }
-.ig-led-2 { animation: ig-led-blink 0.8s infinite ease-in-out 0.3s; }
-.ig-led-3 { animation: ig-led-blink 1.5s infinite ease-in-out 0.6s; }
-
-/* Onda de soporte NOC */
-@keyframes ig-wave-expand {
-    0% { transform: scale(0.8); opacity: 0.8; }
-    100% { transform: scale(1.6); opacity: 0; }
-}
-.ig-anim-wave {
-    animation: ig-wave-expand 2.5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-}
-
-/* Respeto a preferencias de accesibilidad */
 @media (prefers-reduced-motion: reduce) {
     .ig-reveal {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
     }
-    .ig-anim-radar,
-    .ig-anim-shield,
-    .ig-anim-float,
-    .ig-anim-float-reverse,
-    .ig-anim-data-flow,
-    .ig-led-1, .ig-led-2, .ig-led-3,
-    .ig-anim-wave,
-    .ig-status-dot,
-    .ig-status-dot-rec {
+    .ig-marquee-track,
+    .ig-btn-pulse {
         animation: none !important;
     }
 }
-

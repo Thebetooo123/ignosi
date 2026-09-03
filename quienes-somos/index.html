@@ -4,87 +4,65 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Quiénes somos | Ignosi</title>
-
-  <!-- Tipografías (autoalojadas, ver css/fonts.css y assets/fonts/) -->
   <link href="../css/fonts.css" rel="stylesheet">
-
-  <!-- Bootstrap + tema/estilos propios -->
   <link href="../css/vendor/bootstrap.min.css" rel="stylesheet">
   <link href="../css/styles.css" rel="stylesheet">
 </head>
 <body class="ig-page-bg-diagram">
 
-  <!-- Header global: se inyecta desde partials/header.html vía js/main.js -->
   <div id="site-header"></div>
 
-  <!-- 1. Hero Interno (video de fondo con overlay para legibilidad del texto) -->
-  <section class="text-white py-5 mt-0 mb-0 ig-min-vh-50 d-flex align-items-center justify-content-center position-relative overflow-hidden">
-    <video autoplay loop muted playsinline src="../assets/images/hero_quienes-somos.mp4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;"></video>
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1;"></div>
-    <div class="container text-center position-relative" style="z-index: 2;">
-      <h1 class="display-4 fw-bold text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">Quiénes Somos</h1>
+  <section class="ig-min-vh-50 d-flex align-items-center justify-content-center position-relative overflow-hidden text-white py-5">
+    <video autoplay loop muted playsinline src="../assets/images/hero_quienes-somos.mp4" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-0"></video>
+    <div class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background-color:rgba(0,0,0,.6);"></div>
+    <div class="container position-relative z-2 text-center">
+      <h1 class="display-4 fw-bold text-white" style="text-shadow:2px 2px 4px rgba(0,0,0,.7);">Quiénes Somos</h1>
       <p class="lead mb-0 text-white">Innovamos para transformarte</p>
     </div>
   </section>
 
-  <!-- 2. Nuestra Esencia (perfil corporativo sobre el diagrama de fondo fijo
-       de <body>: solo clases de Bootstrap salvo el panel translúcido y el
-       acento/sombra en el dorado exacto de marca #c59b27, que no tienen
-       equivalente nativo -- Bootstrap no tiene utilidades de rgba()+
-       backdrop-filter combinadas ni de sombra desplazada en un color
-       arbitrario, ver notas en los estilos inline de abajo) -->
-  <section class="py-5 bg-transparent">
-    <!-- Panel translúcido: necesario para que el texto siga siendo legible
-         sobre el diagrama de fondo fijo (ver .ig-page-bg-diagram en
-         styles.css); text-white en el contenedor no alcanza para el <h2>,
-         porque Bootstrap fija el color de los encabezados con
-         --bs-heading-color (no lo hereda del padre), así que se agrega
-         text-white también al título. -->
-    <div class="container p-4 p-md-5 rounded-4 shadow-lg text-white" style="background-color: rgba(15, 32, 39, 0.85); backdrop-filter: blur(5px);">
-      <div class="row align-items-center g-5">
-        <div class="col-md-6">
-          <h2 class="border-start border-4 ps-3 mb-4 text-white" style="border-color:#c59b27 !important;">Nuestra Esencia</h2>
-          <p class="lead">En Ignosi ofrecemos soluciones innovadoras, alineando las Tecnologías de Información con los objetivos del negocio  para impulsar el crecimiento y desarrollo de nuestros clientes, así como a lograr la excelencia operativa.</p>
+  <section class="bg-transparent py-5">
+    <div class="container p-4 p-md-5 rounded-4 shadow-lg text-white" style="background-color:rgba(var(--ig-navy-rgb),.85);backdrop-filter:blur(5px);">
+      <div class="row align-items-center g-4 g-md-5">
+        <div class="col-12 col-md-6">
+          <h2 class="ig-border-gold border-start border-4 ps-3 mb-4 text-white">Nuestra Esencia</h2>
+          <p class="lead">En Ignosi ofrecemos soluciones innovadoras, alineando las Tecnologías de Información con los objetivos del negocio para impulsar el crecimiento y desarrollo de nuestros clientes, así como a lograr la excelencia operativa.</p>
           <p class="mb-0">Contamos con un grupo de consultores con amplia experiencia en las diferentes áreas de TI, quienes se encuentran dispuestos a compartir sus conocimientos con nuestros clientes con el fin de mejorar tanto su infraestructura tecnológica como sus procesos de negocio.</p>
         </div>
-        <div class="col-md-6">
-          <img alt="Ingenieros de Ignosi trabajando en infraestructura corporativa" class="img-fluid rounded w-100" src="../assets/images/ImagenCorporativa1.png" style="box-shadow: -20px 20px 0px #c59b27;">
+        <div class="col-12 col-md-6">
+          <img alt="Ingenieros de Ignosi trabajando en infraestructura corporativa" class="img-fluid rounded w-100" src="../assets/images/ImagenCorporativa1.webp" style="box-shadow:-20px 20px 0px var(--ig-gold);">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. Misión, Visión y Valores (tarjetas, solo clases de Bootstrap; el
-       <h2> lleva text-white porque, al quitarle bg-light a la sección para
-       dejar ver el diagrama de fondo, el color oscuro por defecto de los
-       encabezados -- --bs-heading-color -- quedaba ilegible) -->
   <section class="bg-transparent py-5">
     <div class="container">
       <h2 class="text-center mb-0 text-white">Nuestro ADN</h2>
 
       <div class="row">
 
-        <div class="col-md-4 mt-4">
-          <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body text-center">
+        <div class="col-12 col-md-4 mt-4">
+          <div class="card ig-hover-lift border-0 shadow-lg rounded-4 h-100">
+            <div class="card-body d-flex flex-column align-items-center text-center p-4">
               <h5 class="card-title fw-bold mb-3">Misión</h5>
               <p class="card-text text-muted mb-0">Brindar soluciones integrales en tecnologías de la información, seguridad y telecomunicaciones; diseñando e implementando infraestructuras robustas y eficientes que garanticen la continuidad y el crecimiento operativo de nuestros clientes.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 mt-4">
-          <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body text-center">
+        <div class="col-12 col-md-4 mt-4">
+          <div class="card ig-hover-lift border-0 shadow-lg rounded-4 h-100">
+            <div class="card-body d-flex flex-column align-items-center text-center p-4">
               <h5 class="card-title fw-bold mb-3">Visión</h5>
               <p class="card-text text-muted mb-0">Consolidarnos como el aliado tecnológico más confiable y referente en el mercado, reconocidos por nuestra capacidad de innovación, excelencia técnica y compromiso inquebrantable con el éxito de cada proyecto.</p>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4 mt-4">
-          <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body text-center">
+        <div class="col-12 col-md-4 mt-4">
+          <div class="card ig-hover-lift border-0 shadow-lg rounded-4 h-100">
+            <div class="card-body d-flex flex-column align-items-center text-center p-4">
               <h5 class="card-title fw-bold mb-3">Valores</h5>
               <p class="card-text text-muted mb-0">
                 • Innovación: Adoptamos tecnología de vanguardia.<br>
@@ -100,146 +78,71 @@
     </div>
   </section>
 
-  <!-- 4. Clientes y Aliados Tecnológicos (dos carruseles nativos de Bootstrap
-       moviéndose en direcciones opuestas). El carrusel de Clientes usa el
-       autoplay nativo de Bootstrap (data-bs-ride + data-bs-interval), que solo
-       avanza "hacia adelante" (next). Como Bootstrap no tiene una opción nativa
-       de reversa, el carrusel de Aliados se inicializa sin autoplay propio
-       (ver script al final del body) y un pequeño Vanilla JS lo hace retroceder
-       (carousel.prev()) en su propio intervalo, para lograr el efecto visual
-       de direcciones opuestas pedido. -->
-  <section class="container-fluid py-5 bg-transparent overflow-hidden">
+  <section class="bg-transparent py-5 overflow-hidden">
 
-    <div class="row">
-      <div class="col-12">
-        <h2 class="text-center mb-4 text-white">Nuestros Clientes Principales</h2>
-        <div class="carousel slide mx-auto" data-bs-interval="1000" data-bs-ride="carousel" id="clientesCarousel" style="max-width:360px;">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Logo Cliente 1" class="img-fluid" src="../assets/images/clientes1.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Logo Cliente 2" class="img-fluid" src="../assets/images/clientes2.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Logo Cliente 3" class="img-fluid" src="../assets/images/clientes3.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Logo Cliente 4" class="img-fluid" src="../assets/images/clientes4.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Logo Cliente 5" class="img-fluid" src="../assets/images/clientes5.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Logo Cliente 6" class="img-fluid" src="../assets/images/clientes6.png" style="max-height:80px;">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-5">
-      <div class="col-12">
-        <h2 class="text-center mb-4 text-white">Nuestros Aliados Tecnológicos</h2>
-        <!-- Sin data-bs-ride/data-bs-interval a propósito: el avance en reversa
-             de este carrusel lo controla el script del final del body, no el
-             autoplay nativo de Bootstrap (ver comentario arriba de la sección). -->
-        <div class="carousel slide mx-auto" id="aliadosCarousel" style="max-width:360px;">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 1" class="img-fluid" src="../assets/images/aliados1.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 2" class="img-fluid" src="../assets/images/aliados2.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 3" class="img-fluid" src="../assets/images/aliados3.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 4" class="img-fluid" src="../assets/images/aliados4.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 5" class="img-fluid" src="../assets/images/aliados5.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 6" class="img-fluid" src="../assets/images/aliados6.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 7" class="img-fluid" src="../assets/images/aliados7.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 8" class="img-fluid" src="../assets/images/aliados8.png" style="max-height:80px;">
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="bg-white border rounded d-flex align-items-center justify-content-center" style="height:120px;">
-                <img alt="Grupo Logos 9" class="img-fluid" src="../assets/images/aliados9.png" style="max-height:80px;">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- 5. Call to Action (cierre, solo clases de Bootstrap) -->
-  <section class="bg-primary text-white py-5 text-center">
     <div class="container">
-      <h2 class="mb-3">¿Listo para modernizar tu infraestructura?</h2>
-      <a class="btn btn-light btn-lg mt-3" href="../contacto/">Habla con un experto</a>
+      <h2 class="text-center mb-4 text-white">Nuestros Clientes Principales</h2>
+      <div class="ig-marquee-shell col-12 col-lg-10 mx-auto bg-white shadow-lg rounded-4 overflow-hidden d-flex align-items-center">
+        <div class="ig-marquee-track">
+          <div class="ig-marquee-item"><img alt="Logo Cliente 1" src="../assets/images/clientes1.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Cliente 2" src="../assets/images/clientes2.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Cliente 3" src="../assets/images/clientes3.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Cliente 4" src="../assets/images/clientes4.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Cliente 5" src="../assets/images/clientes5.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Cliente 6" src="../assets/images/clientes6.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Cliente 7" src="../assets/images/clientes7.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Cliente 8" src="../assets/images/clientes8.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes1.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes2.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes3.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes4.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes5.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes6.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes7.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/clientes8.webp"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <h2 class="text-center mb-4 text-white">Nuestros Aliados Tecnológicos</h2>
+      <div class="ig-marquee-shell col-12 col-lg-10 mx-auto bg-white shadow-lg rounded-4 overflow-hidden d-flex align-items-center">
+        <div class="ig-marquee-track ig-marquee-reverse">
+          <div class="ig-marquee-item"><img alt="Logo Aliado 1" src="../assets/images/aliados1.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 2" src="../assets/images/aliados2.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 3" src="../assets/images/aliados3.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 4" src="../assets/images/aliados4.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 5" src="../assets/images/aliados5.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 6" src="../assets/images/aliados6.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 7" src="../assets/images/aliados7.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 8" src="../assets/images/aliados8.webp"></div>
+          <div class="ig-marquee-item"><img alt="Logo Aliado 9" src="../assets/images/aliados9.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados1.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados2.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados3.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados4.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados5.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados6.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados7.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados8.webp"></div>
+          <div class="ig-marquee-item" aria-hidden="true"><img alt="" src="../assets/images/aliados9.webp"></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="ig-features-bg-plain position-relative text-center py-5 mt-5">
+    <div class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background-color:rgba(var(--ig-navy-rgb),.85);"></div>
+    <div class="container position-relative z-2">
+      <h2 class="display-5 fw-bold text-white mb-3">¿Listo para modernizar tu infraestructura?</h2>
+      <a class="btn btn-warning ig-btn-gold ig-btn-pulse btn-lg rounded-pill px-5 py-3 fw-bold shadow-lg mt-4" href="../contacto/">Habla con un experto</a>
     </div>
   </section>
 
-  <!-- Footer global: se inyecta desde partials/footer.html vía js/main.js -->
   <div id="site-footer"></div>
 
   <script src="../js/vendor/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
-
-  <!-- Vanilla JS exclusivo de esta página: Bootstrap Carousel no tiene una
-       opción nativa para autoavanzar en reversa, así que el carrusel de
-       Aliados (sin data-bs-ride) se instancia manualmente y se retrocede
-       con carousel.prev() en su propio intervalo, para que se mueva en
-       dirección opuesta al carrusel de Clientes (que sí usa el autoplay
-       nativo de Bootstrap hacia adelante). -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var aliadosEl = document.getElementById('aliadosCarousel');
-      if (aliadosEl) {
-        var aliadosCarousel = new bootstrap.Carousel(aliadosEl, { interval: false, ride: false, wrap: true });
-        setInterval(function () {
-          aliadosCarousel.prev();
-        }, 1500);
-      }
-    });
-  </script>
 </body>
 </html>

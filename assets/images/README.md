@@ -1,21 +1,51 @@
 # assets/images
 
-Imágenes usadas por `index.html`, autoalojadas (ya no dependen de una CDN externa):
+Multimedia del sitio, autoalojada (sin CDNs ni URLs externas). **Todas las imágenes están en `.webp`**; los videos se mantienen en `.mp4`. Ver la sección *Multimedia en WebP* del [README principal](../../README.md) para los criterios de conversión.
 
-- `hero_inicio.mp4` — video de fondo en loop del Hero principal de `index.html` (renombrado desde `convierte_la_imagen_en_un_vide.mp4`), reemplaza al antiguo carrusel de imágenes `hero-server-room-*.jpg` (eliminadas).
-- `about-engineer-rack.jpg` — fotografía de la sección "Acerca de".
-- `bg-diagram.jpg` — fondo oscuro tipo diagrama para la sección "Banner" intermedia de `index.html` (fondo fijo/parallax vía `.ig-banner-bg` en `css/styles.css`).
-- `bg-services.jpg` — fondo minimalista de la sección "Nuestros Servicios" de `index.html`, visible en los gutters entre las tarjetas del grid.
-- `logo-ignosi.png` — logo de la marca en el header (438×150px, con transparencia).
-- `service-redes-comunicaciones.png` — render 3D isométrico de topología de red corporativa para la sección "Redes y Comunicaciones" (`servicios/index.html`).
-- `service-seguridad-informatica.png` — render 3D de cúpula de seguridad perimetral y escudos de protección para "Seguridad Informática" (`servicios/index.html`).
-- `service-seguridad-electronica.png` — render 3D isométrico de videovigilancia CCTV y control de acceso para "Seguridad Electrónica" (`servicios/index.html`).
-- `service-cableado-estructurado.png` — render 3D de cableado estructurado en data center para "Cableado Estructurado" (Panduit, Charofil, Linkedpro) (`servicios/index.html`).
-- `service-servidores.png` — render 3D de rack de servidores corporativo y virtualización para "Servidores" (APC, Tripp-Lite) (`servicios/index.html`).
-- `service-cloud.png` — render 3D de transición e infraestructura híbrida multi-nube para "Cloud" (Microsoft Azure, AWS, Veeam) (`servicios/index.html`).
-- `service-equipo-computo.jpg` — fotografía y render de hardware corporativo y periféricos para "Equipo de Cómputo y Accesorios" (Dell, HP, Lenovo, Logitech, Western Digital) (`servicios/index.html`).
-- `service-soporte-tecnico.jpg` — fotografía y visualización holográfica de operaciones NOC para "Soporte Técnico" (`servicios/index.html`).
+## Videos de fondo
 
-`about-engineer-rack.jpg` se descargó de la misma URL de `lh3.googleusercontent.com` que usaba la maqueta original (placeholder generado por la herramienta de diseño, 512×279px). Es de **baja resolución** — antes de producción hay que reemplazarla por fotografía propia en mayor resolución, manteniendo el mismo nombre de archivo (o actualizando la ruta `src` correspondiente en `index.html`).
+| Archivo | Uso |
+|---|---|
+| `hero_inicio.mp4` | Video en loop del Hero principal de `index.html` |
+| `hero_quienes-somos.mp4` | Video en loop del Hero de `quienes-somos/index.html` |
 
-`logo-ignosi.png` se descargó del archivo de logo provisto por el usuario (`img1.wsimg.com`). En `index.html` se muestra con la clase `.ig-header-logo` (`css/styles.css`), que fija su alto a 40px manteniendo la proporción — es la única clase `ig-*` que usa el `<header>` (ver la excepción documentada en `CLAUDE.md`).
+## Fondos
+
+| Archivo | Uso |
+|---|---|
+| `bg-features.webp` | Fondo geométrico dorado, fijo tipo parallax: tarjetas de introducción y "Bienvenido a IGNOSI" (`index.html`) y CTA de `quienes-somos/index.html` |
+| `bg-diagram.webp` | Diagrama oscuro de infraestructura: banner intermedio de `index.html` y fondo de página completa de `quienes-somos/` y `contacto/` |
+| `bg-services.webp` | Fondo minimalista de la cuadrícula "Nuestros Servicios" (`index.html`), visible entre las tarjetas |
+| `bg-servicio-impar.webp` | Fondo de las secciones impares de `servicios/index.html` (1, 3, 5, 7) |
+| `bg-servicio-par.webp` | Fondo de las secciones pares de `servicios/index.html` (2, 4, 6, 8) |
+
+## Imágenes de servicios
+
+Una por sección de `servicios/index.html`, todas mostradas mediante `.ig-service-img`:
+
+| Archivo | Servicio |
+|---|---|
+| `service-redes-comunicaciones.webp` | Redes y Comunicaciones (Cisco, Aruba, Ubiquiti, TP-Link) |
+| `service-seguridad-informatica.webp` | Seguridad Informática (Fortinet, Check Point, Kaspersky) |
+| `service-seguridad-electronica.webp` | Seguridad Electrónica (Hikvision, Dahua, Bosch, ZKTeco) |
+| `service-cableado-estructurado.webp` | Cableado Estructurado (Panduit, Charofil, Linkedpro) |
+| `service-servidores.webp` | Servidores y virtualización (APC, Tripp-Lite) |
+| `service-cloud.webp` | Cloud (Microsoft Azure, AWS, Veeam) |
+| `service-equipo-computo.webp` | Equipo de Cómputo (Dell, HP, Lenovo, Logitech, Western Digital) |
+| `service-soporte-tecnico.webp` | Soporte Técnico / operaciones NOC |
+
+## Marca y contenido
+
+| Archivo | Uso |
+|---|---|
+| `logo-ignosi.webp` | Logo del header (`partials/header.html`), dimensionado por `.ig-header-logo` |
+| `ImagenCorporativa1.webp` | Fotografía de "Nuestra Esencia" (`quienes-somos/index.html`) |
+| `about-engineer-rack.webp` | Fotografía de "Bienvenido a IGNOSI" (`index.html`) |
+| `clientes1.webp` … `clientes8.webp` | Logos de clientes, cinta en scroll infinito (`quienes-somos/index.html`) |
+| `aliados1.webp` … `aliados9.webp` | Logos de aliados tecnológicos, cinta en scroll infinito (`quienes-somos/index.html`) |
+
+## Notas
+
+- `about-engineer-rack.webp` procede de un *placeholder* de baja resolución (990×279 originales). Antes de producción conviene reemplazarlo por fotografía propia en mayor resolución, manteniendo el nombre de archivo o actualizando el `src` en `index.html`.
+- Los logos de clientes y aliados se convirtieron en modo *near-lossless* para conservar nítidas las líneas finas y el texto de cada marca.
+- Al añadir una imagen: convertirla a `.webp` antes de commitearla y referenciarla con ruta relativa (`./assets/images/...` desde la raíz, `../assets/images/...` desde una subcarpeta). Nunca con ruta absoluta ni URL externa.

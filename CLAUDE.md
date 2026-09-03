@@ -1,78 +1,101 @@
-# AGENT.md
+# CLAUDE.md
 
 Guía de contexto para trabajar en este repositorio con agentes de IA.
 
 ## Qué es este proyecto
 
-Landing page corporativa estática de **IGNOSI Networks** (integrador de soluciones tecnológicas: redes, CCTV, control de acceso, detección de incendios, energía ininterrumpida, data centers). Sin backend ni build step: HTML + Bootstrap 5.3.8 (archivos propios, sin CDN) + JavaScript vanilla/Bootstrap. Se publica en **GitHub Pages (Project Site)**, es decir bajo `usuario.github.io/repo/` — no en la raíz del dominio —, lo cual condiciona cómo deben escribirse las rutas en todo el sitio (ver "Rutas: siempre relativas" más abajo).
+Sitio corporativo estático de **IGNOSI Networks** (integrador de soluciones tecnológicas: redes, seguridad informática y electrónica, cableado estructurado, servidores, cloud, equipo de cómputo y soporte técnico). Sin backend, sin base de datos y **sin paso de compilación**: HTML + Bootstrap 5.3.8 (archivos propios, sin CDN) + JavaScript vanilla.
 
-## Estructura
+Se publica en **GitHub Pages (Project Site)**, bajo `usuario.github.io/repo/` y no en la raíz del dominio — esto condiciona cómo se escriben las rutas en todo el sitio (ver *Rutas relativas*).
 
-- `index.html` — página de inicio, en la raíz. `contacto/index.html` — formulario de contacto (ruta `/contacto`). `quienes-somos/index.html` — historia/misión/visión/valores/clientes (ruta `/quienes-somos`). Las páginas secundarias viven en su propia carpeta con un `index.html` adentro (en vez de `contacto.html`/`quienes-somos.html` sueltos en la raíz) precisamente para que `/contacto` y `/quienes-somos` funcionen como URLs limpias en cualquier hosting estático sin configurar reglas de rewrite — es el comportamiento por defecto de servir un directorio. Las tres comparten header y footer (ver `partials/`) y layout general.
-- **Rutas: siempre relativas, nunca absolutas desde la raíz (`/css/...`, `/assets/...`).** GitHub Pages sirve el sitio bajo `usuario.github.io/repo/`, así que cualquier ruta que empiece con `/` apunta a `usuario.github.io/algo` (fuera del repo) y da 404 — ver commit que corrigió esto tras detectarlo en la demo publicada. Cada página usa el prefijo relativo correcto a su propia profundidad: `index.html` (en la raíz) usa `./` (`./css/styles.css`, `./assets/images/...`, `./js/main.js`); `contacto/index.html` y `quienes-somos/index.html` (un nivel más abajo) usan `../` (`../css/styles.css`, `../assets/images/...`, `../js/main.js`). Si se agrega una página nueva, replicar el prefijo que le corresponda según su profundidad real en el árbol de carpetas.
-- `partials/header.html`, `partials/footer.html` — marcado del `<header>` y `<footer>` globales, extraído para reutilizarse en las tres páginas. Cada página los referencia con un contenedor vacío (`<div id="site-header"></div>` / `<div id="site-footer"></div>`) que `js/main.js` reemplaza en tiempo de ejecución vía `fetch()`. El proyecto no tiene backend ni motor de plantillas, así que esta es la única forma de no duplicar ese HTML sin introducir un build step; como contrapartida, el sitio debe **servirse por HTTP** (no abrir los `.html` con doble clic) porque `fetch()` de archivos locales vía `file://` está bloqueado por CORS, y hay un breve parpadeo mientras el header/footer terminan de cargar. Cualquier edición al header o footer va en estos dos archivos, nunca copiada dentro de una página individual.
-  - **Cómo `js/main.js` resuelve la ruta correcta sin importar la profundidad de la página**: lee el atributo `src` de su propio `<script>` (`document.currentScript`, capturado de forma síncrona al cargar el archivo) — que la página ya tuvo que escribir con el prefijo relativo correcto (`./js/main.js` o `../js/main.js`) — y lo reutiliza como `basePath` tanto para el `fetch()` de los partials como para sustituir el token `%BASE%` dentro de su HTML (el logo y los `href` del menú en `partials/header.html`, el enlace de "Servicios" en `partials/footer.html`). Ese token es necesario porque un partial compartido no puede traer un prefijo relativo fijo escrito a mano: necesita `./` cuando lo carga `index.html` pero `../` cuando lo carga una página de subcarpeta. Al agregar un `href`/`src` nuevo dentro de un partial, usar `%BASE%` en vez de una ruta relativa literal.
-- `css/vendor/bootstrap.min.css` — Bootstrap 5.3.8 sin modificar. No editar directamente; para theming usar `css/styles.css`.
-- `css/styles.css` — tema de marca (reasigna variables CSS de Bootstrap: `--bs-primary`, `--bs-body-color`, `--bs-border-radius`, etc.) + clases propias con prefijo `ig-` para lo que Bootstrap no resuelve nativamente. **Cada clase `ig-*` trae un comentario explicando por qué Bootstrap no la cubre** — mantener esa convención al añadir nuevas.
-- `js/vendor/bootstrap.bundle.min.js` — Bootstrap 5.3.8 + Popper, sin modificar. Debe cargarse **antes** de `js/main.js`.
-- `js/main.js` — interactividad propia del sitio: inyecta `partials/header.html`/`partials/footer.html` (ver arriba). El `<header>` en sí es un `navbar` estándar de Bootstrap (`navbar-expand-lg` + `navbar-toggler` + `navbar-collapse`); el colapso en móvil lo maneja el JS del propio Bootstrap (`js/vendor/bootstrap.bundle.min.js`, delegación de eventos vía `data-bs-toggle`) sin JS de interacción propio.
-- `css/fonts.css` + `assets/fonts/*.woff2` — Karla, JetBrains Mono, Playfair Display y Material Symbols Outlined autoalojados (no hay `<link>` a `fonts.googleapis.com`). Si cambian las familias/pesos usados en el sitio, hay que regenerar este `@font-face` y volver a descargar los `.woff2` correspondientes desde Google Fonts (no editar los pesos "a mano": el archivo `.woff2` de cada peso es distinto).
-- `assets/images/` — imágenes y videos propios, autoalojados (ver su README): `hero_inicio.mp4` (video de fondo en loop del Hero), `about-engineer-rack.jpg`, `logo-ignosi.png` (logo del header).
-- `Ejemplo.html` — maqueta original de un solo archivo en **Tailwind CSS**, conservada como referencia histórica; **no editar como parte del sitio activo**, los cambios van en `index.html`/`contacto/index.html`/`quienes-somos/index.html` y sus archivos separados.
-- `bootstrap-5.3.8-dist/` — ZIP de distribución oficial de Bootstrap del que se copiaron los archivos a `css/vendor/`/`js/vendor/`. Ya no se usa (nada en el sitio apunta ahí) y puede eliminarse.
+La descripción completa de la arquitectura vive en [README.md](README.md). Este archivo cubre las **reglas de trabajo**.
 
-## Sin dependencias de red
+---
 
-El sitio no debe tener ningún `<link>`/`url()`/`src` apuntando a un dominio externo (CDN de Tailwind, Google Fonts, imágenes remotas, etc.) — todo CSS, JS, tipografía e imagen vive dentro del repositorio. Al agregar una fuente o imagen nueva:
+## Regla de prioridad: Bootstrap First
 
-- **Fuentes:** descargar los `.woff2` (p. ej. desde `fonts.googleapis.com` con una cabecera `User-Agent` de navegador moderno para obtener woff2, y las URLs reales de archivo desde `fonts.gstatic.com` dentro de esa respuesta), guardarlos en `assets/fonts/` y declarar el `@font-face` en `css/fonts.css` apuntando a la ruta local.
-- **Imágenes:** guardarlas en `assets/images/` y referenciarlas con ruta relativa (`./assets/images/...` o `../assets/images/...` según la profundidad de la página, ver nota en "Estructura"), nunca con una URL absoluta a otro host ni con `/assets/images/...` (raíz del dominio, no del repo — ver nota sobre GitHub Pages).
+Toda implementación de estilos, componentes visuales, responsive design y animaciones debe realizarse **primero con las capacidades nativas de Bootstrap 5.3.x** ya incluidas en el proyecto.
 
-## Convenciones
+Antes de escribir CSS o JavaScript personalizado, verificar si Bootstrap ofrece una solución adecuada.
 
-- **No hay proceso de build.** Se usan los archivos `.min.css`/`.min.js` de Bootstrap directamente, sin Sass ni bundler. Por eso el theming se hace 100% con variables CSS en tiempo de ejecución (custom properties `--bs-*`), no con variables Sass — si se necesita cambiar algo que solo existe como variable Sass en Bootstrap (p. ej. los breakpoints de `.container-*`), no hay forma de tocarlo sin introducir un build step; en esos casos se usa una clase `ig-*` propia (ver `css/styles.css`).
-- **Traducción Tailwind → Bootstrap:** al modificar `index.html`, preferir siempre una clase/utilidad nativa de Bootstrap (grid `row`/`col`, `navbar`, `ratio`, `object-fit-*`, utilidades de opacidad `--bs-bg-opacity`/`--bs-text-opacity` vía `style`, etc.) antes que CSS propio. Si de verdad no hay forma de resolverlo con Bootstrap, documentar el porqué en el comentario de la clase `ig-*` correspondiente en `css/styles.css`.
-- **Idioma del contenido:** español (México). Mantener el tono corporativo/técnico existente.
-- **Escala tipográfica propia** (`.ig-display`, `.ig-headline-md`, `.ig-headline-sm`, `.ig-stat-number`, `.ig-label-caps`, `.ig-body-lg`) reproduce los tamaños exactos del diseño original (no la escala fija de `.display-1..6`/`.fs-1..6` de Bootstrap). Combinar con `.ig-font-serif` (Playfair Display) o `.ig-font-mono` (JetBrains Mono) donde corresponda; el resto del texto usa la tipografía base (Karla) heredada de `--bs-body-font-family`.
-- **Excepción — `<header>`** (`partials/header.html`): a pedido explícito, el header es un `navbar` estándar y responsivo de Bootstrap (`navbar navbar-expand-lg navbar-dark bg-dark shadow-sm` + `container-fluid` + `navbar-brand` + `navbar-toggler`/`navbar-toggler-icon` + `collapse navbar-collapse` + `navbar-nav`/`nav-item`/`nav-link`), sin `style=""`. **Sin `sticky-top`/`fixed-top`**: vive en el flujo normal del documento y se pierde de vista al hacer scroll, como el resto de la página. Por debajo del breakpoint `lg` el menú se colapsa detrás del botón hamburguesa (JS nativo de Bootstrap vía `data-bs-toggle="collapse"`) para que los enlaces nunca se superpongan con el logo. La única excepción no nativa es `.ig-header-logo` (fija el alto del logo — 56px en móvil, 80px desde `lg` — manteniendo su proporción; Bootstrap no tiene utilidades de alto en píxeles fijos, ni responsivas) — se agregó a propósito, con el usuario, tras confirmar que ni `img-fluid` ni ninguna clase nativa lo resolvían. No agregar más clases `ig-*` aquí sin necesidad real equivalente.
-- **Enlaces del navbar global y del footer: rutas "limpias" (sin `.html`) y relativas (vía `%BASE%`, ver arriba).** Dentro de `partials/header.html`/`partials/footer.html`: `href="%BASE%"` (Inicio), `href="%BASE%quienes-somos/"` (Quiénes somos), `href="%BASE%contacto/"` (Contacto), `href="%BASE%#servicios"` (Servicios, ancla dentro de Home). El diseño de carpeta-por-página (`contacto/index.html`, `quienes-somos/index.html`) hace que estas URLs con barra final funcionen como rutas limpias en cualquier hosting estático (incluido GitHub Pages) sin reglas de rewrite: sirven `carpeta/index.html` al pedir `carpeta/` por defecto.
-- **Excepción — sección de tarjetas "Quiénes somos / Servicios / Alianzas estratégicas"** (justo debajo del hero, en `index.html`): a pedido explícito, usa *exclusivamente* clases nativas de Bootstrap (`container`, `row`, `col-md-4`, `.card`/`.card-body`/`.card-title`/`.card-text`, `.text-primary`, `.fs-1`, `.shadow-lg`, `.rounded-4`, `.z-3`...), sin `style=""`. Por eso sus títulos/tamaños no siguen la escala tipográfica `.ig-*` del resto del sitio. `material-symbols-outlined` en los iconos no cuenta como excepción: es la base del sistema de iconos de todo el sitio (`css/fonts.css`), no CSS agregado para esta sección. **Única salvedad, también a pedido explícito:** el contenedor de las tarjetas usa `.ig-overlap-mt-n80` (superposición sobre el Hero), la `<section>` usa `.ig-features-bg` (imagen de fondo `assets/images/bg-features.jpg` fusionada con un degradado hacia el gris oscuro de Bootstrap para que el corte con el Hero se vea continuo) y cada `.card` usa `.ig-hover-lift` (elevación en hover), porque este build de Bootstrap no compila utilidades de margen negativo (`$enable-negative-margins` desactivado), no tiene utilidades de `background-image`/`linear-gradient` combinado, ni una utilidad nativa de "lift on hover" — las tres documentadas con comentario en `css/styles.css`, igual que el resto de las `ig-*` del sitio. No agregar más CSS propio en esta sección sin necesidad real equivalente.
-- **Excepción — formulario de contacto** (`contacto/index.html`, sección `bg-light`): mismo caso, a pedido explícito usa *exclusivamente* clases nativas de Bootstrap (`container`, `row justify-content-center`, `col-md-8 col-lg-6`, `form-control`, `btn btn-dark`), sin `ig-*` ni `style=""`. El fondo/borde blanco de los inputs y el fondo de las tarjetas ya salen "gratis" porque `--bs-body-bg` y `--bs-border-color` están remapeados a la marca en `:root` — no fue necesario agregar nada para lograrlo. Vive únicamente en `contacto/index.html`, no en `index.html`.
-- **Sección "Quiénes somos" (`quienes-somos/index.html`)**: usa Lorem Ipsum como contenido de relleno a propósito (página aún sin copy real). Las imágenes de fondo con capa oscura se resuelven 100% con utilidades nativas de Bootstrap (`position-absolute`/`top-0`/`start-0`/`w-100`/`h-100`/`object-fit-cover` para la imagen, `bg-black`/`bg-opacity-50` para el overlay) — no hizo falta CSS propio. El carrusel de "Clientes principales" no lleva `carousel-control-prev/next` ni `carousel-indicators`: al no incluirlos en el markup no hace falta ocultarlos con CSS.
-- **Footer** (`partials/footer.html`): el espaciado interno (padding del contenedor, margen de los títulos de columna, separación entre enlaces) usa *exclusivamente* utilidades nativas de Bootstrap (`py-5`, `mb-3`, `gap-2`...) en vez de la clase `ig-py-24`/`ig-gap-*` que usan otras secciones del sitio para superar el tope de 3rem/48px de la escala de Bootstrap — aquí, al contrario, el ajuste fue *reducir* el espaciado, así que el tope nativo de 48px (`py-5`) ya alcanza y no hace falta CSS propio.
-- **Iconografía:** Material Symbols Outlined (autoalojado, ver `css/fonts.css`), usado como `<span class="material-symbols-outlined">nombre_del_icono</span>`.
-- **Indentación:** cada página HTML está indentada por nivel de anidación (2 espacios) con una línea en blanco entre bloques `<section>`/subsecciones grandes, para poder ubicar cada sección de un vistazo. Mantener ese estilo al editar.
-- El sitio es multi-página (`index.html`, `contacto/index.html`, `quienes-somos/index.html`); el `<header>`/`<footer>` viven una sola vez en `partials/` (ver arriba) y no se duplican en cada archivo.
+Si Bootstrap **no puede resolver el requerimiento**, se permite una solución propia, pero hay que:
+
+1. Indicar explícitamente, **en la respuesta al usuario**, qué limitación de Bootstrap impide la solución nativa.
+2. Explicar por qué la solución personalizada es necesaria.
+3. Mantenerla simple, modular y compatible con la estructura existente.
+4. No duplicar funcionalidad que Bootstrap ya provee.
+
+**Principio general:** Bootstrap es siempre la primera opción; el código propio es la excepción y debe justificarse.
+
+### Bootstrap First Policy
+
+- **MUST** attempt to solve the requirement using Bootstrap 5.3.x first.
+- **MUST NOT** introduce custom CSS or JavaScript when an adequate Bootstrap solution already exists.
+- If Bootstrap cannot adequately satisfy the requirement, the agent **MUST document the limitation in its response to the user** before introducing a custom solution.
+- Custom implementations must be minimal, isolated, maintainable, and consistent with the existing architecture.
+
+---
+
+## Convenciones obligatorias
+
+### Sin comentarios en el código
+
+`.html`, `.css` y `.js` se mantienen **completamente libres de comentarios**. El código debe ser autodescriptivo y la documentación vive en `README.md` y en este archivo.
+
+> Esto revierte una convención anterior en la que cada clase `ig-*` llevaba un comentario justificándola. Esa justificación ahora se da **en la respuesta al usuario** al introducir la clase, y se documenta en la tabla de clases `ig-*` del README. **No volver a añadir comentarios al código.**
+
+### Nomenclatura
+
+- **CSS**: clases propias siempre en `kebab-case` con prefijo `ig-` (`ig-service-bg-odd`, `ig-marquee-track`). Sin excepciones: no crear clases sin prefijo.
+- **JavaScript**: `camelCase` para variables y funciones.
+- **Indentación**: 2 espacios por nivel de anidación, con una línea en blanco entre bloques `<section>`.
+- **Idioma del contenido**: español (México), tono corporativo y técnico.
+
+### Estilos inline
+
+Se admiten solo para valores puntuales que Bootstrap no puede expresar **y que se usan una sola vez** (por ejemplo, el color de un overlay `rgba()` concreto). Si un mismo estilo inline aparece en dos o más lugares, debe convertirse en una clase `ig-*` en `css/styles.css`.
+
+Usar los tokens de marca ya definidos en `:root` (`var(--ig-gold)`, `rgba(var(--ig-navy-rgb), .85)`, `var(--ig-cream)`) en vez de repetir hexadecimales sueltos.
+
+### Rutas relativas, nunca absolutas
+
+**Nunca** usar rutas que empiecen con `/` (`/css/...`, `/assets/...`): en GitHub Pages Project Site apuntan fuera del repositorio y dan 404.
+
+- `index.html` (raíz) → `./css/...`, `./assets/...`, `./js/main.js`
+- `servicios/`, `contacto/`, `quienes-somos/` (un nivel) → `../css/...`, `../assets/...`, `../js/main.js`
+
+Al agregar una página nueva, replicar el prefijo que corresponda a su profundidad real.
+
+### Header y footer: nunca duplicar
+
+El `<header>` y el `<footer>` viven **una sola vez** en `partials/header.html` y `partials/footer.html`, y `js/main.js` los inyecta en runtime en los contenedores `#site-header` / `#site-footer`. Cualquier edición al header o footer va en esos dos archivos, **jamás copiada dentro de una página**.
+
+Dentro de un partial, los `href`/`src` usan el token **`%BASE%`** (que `main.js` sustituye por `./` o `../` según la profundidad de la página), nunca una ruta relativa literal.
+
+Consecuencia operativa: el sitio **debe servirse por HTTP** (`npx serve .`). Abrir los `.html` con doble clic (`file://`) deja la página sin header ni footer, porque `fetch()` está bloqueado por CORS.
+
+### Imágenes: solo WebP
+
+Todas las imágenes del sitio están en `.webp`. Al agregar una imagen nueva: convertirla a `.webp` antes de commitearla, guardarla en `assets/images/` y referenciarla con la ruta relativa que corresponda. No introducir `.jpg`/`.png` nuevos.
+
+Los videos se mantienen en `.mp4` y no se convierten.
+
+### Sin dependencias de red
+
+Ningún `<link>`, `url()` o `src` puede apuntar a un dominio externo (CDN, Google Fonts, imágenes remotas). Todo el CSS, JS, tipografía e imagen vive dentro del repositorio.
+
+Para agregar una fuente: descargar los `.woff2`, guardarlos en `assets/fonts/` y declarar el `@font-face` en `css/fonts.css` apuntando a la ruta local. Cada peso es un archivo distinto; no se ajustan "a mano".
+
+### Archivos que no se tocan
+
+`css/vendor/bootstrap.min.css` y `js/vendor/bootstrap.bundle.min.js` son builds oficiales sin modificar. Cualquier ajuste va en `css/styles.css` o `js/main.js`.
+
+---
 
 ## Al hacer cambios
 
 - Actualizar `CHANGELOG.md` (sección `[Sin publicar]`) con cualquier cambio notable.
-- Si se agregan imágenes propias, colocarlas en `assets/images/` y referenciarlas con rutas relativas con el prefijo que corresponda a la profundidad de la página (`./assets/images/...` desde la raíz, `../assets/images/...` desde una subcarpeta — ver "Rutas: siempre relativas" en Convenciones), nunca con `/assets/images/...` ni con URLs externas.
-- Verificar que los enlaces de ancla (`href="#"`) del menú y footer sigan funcionando o se actualicen a secciones/páginas reales conforme el sitio evolucione.
-- No modificar `css/vendor/bootstrap.min.css` ni `js/vendor/bootstrap.bundle.min.js` — son builds oficiales sin tocar; cualquier ajuste va en `css/styles.css` o `js/main.js`.
-
-## Regla de prioridad para estilos y animaciones
-
-Toda implementación de estilos, componentes visuales, responsive design y animaciones deberá realizarse **primero utilizando las capacidades nativas de Bootstrap 5.3.x** ya incluidas en el proyecto.
-
-Antes de implementar CSS, JavaScript o soluciones personalizadas ("código hecho en casa"), el agente deberá verificar si Bootstrap ofrece una solución adecuada para el requerimiento.
-
-Si Bootstrap **no puede resolver el requerimiento de forma adecuada**, el agente podrá implementar una solución personalizada, pero deberá:
-
-1. Indicar explícitamente qué limitación de Bootstrap impide utilizar una solución nativa.
-2. Explicar brevemente por qué la solución personalizada es necesaria.
-3. Mantener la solución personalizada lo más simple, modular y compatible posible con la estructura y estilos existentes.
-4. Evitar duplicar funcionalidades que Bootstrap ya proporciona.
-
-**Principio general:** Bootstrap es siempre la primera opción; las soluciones personalizadas son la excepción y deben estar justificadas.
-
-### Bootstrap First Policy
-
-When implementing any visual style, layout, responsive behavior, component, transition, or animation:
-
-- **MUST** attempt to solve the requirement using Bootstrap 5.3.x first.
-- **MUST NOT** introduce custom CSS or JavaScript when an adequate Bootstrap solution already exists.
-- If Bootstrap cannot adequately satisfy the requirement, the agent **MUST document the limitation before introducing a custom solution**.
-- Custom implementations must be minimal, isolated, maintainable, and consistent with the existing project architecture.
-
-Bootstrap is the default implementation; custom code is an exception and must be justified.
+- Si la arquitectura, las convenciones o el inventario de clases cambian, actualizar `README.md` para que siga siendo exacto.
+- Verificar que los enlaces de ancla del menú y del footer sigan apuntando a secciones o páginas reales.
+- Verificar responsividad antes de dar por terminado: el sitio debe funcionar sin desbordamiento horizontal desde 360px hasta escritorio.
+- Al eliminar una clase `ig-*` del HTML, revisar si quedó sin uso en `css/styles.css` y borrarla también.

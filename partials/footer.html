@@ -1,8 +1,3 @@
-<!-- Footer Component (oscuro, minimalista). %BASE% lo sustituye js/main.js
-     por "./" o "../" según la profundidad de la página que inyectó este
-     partial (ver comentario en main.js) — necesario para que el enlace de
-     "Servicios" apunte a la home aunque el footer se cargue desde una
-     subcarpeta como /contacto/. -->
 <footer class="w-100" style="background-color:var(--ig-footer-bg);color:rgba(255,255,255,.7);">
   <div class="ig-container px-4 py-5">
 
@@ -16,20 +11,20 @@
       <div class="col-12 col-lg-5">
         <h4 class="ig-label-caps ig-font-mono text-white text-uppercase mb-3">Servicios</h4>
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <ul class="list-unstyled mb-0">
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Redes y Comunicaciones</a></li>
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Seguridad Informatica</a></li>
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Seguridad Electrónica</a></li>
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Cableado Estructurado</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#redes-comunicaciones">Redes y Comunicaciones</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#seguridad-informatica">Seguridad Informática</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#seguridad-electronica">Seguridad Electrónica</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#cableado-estructurado">Cableado Estructurado</a></li>
             </ul>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <ul class="list-unstyled mb-0">
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Servidores</a></li>
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Cloud</a></li>
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Equipo de Cómputo y Accesorios</a></li>
-              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%#servicios" style="color:inherit;">Soporte Técnico</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#servidores">Servidores</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#cloud">Cloud</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#equipo-computo">Equipo de Cómputo y Accesorios</a></li>
+              <li class="mb-2"><a class="text-decoration-none ig-link-hover-white" href="%BASE%servicios/#soporte-tecnico">Soporte Técnico</a></li>
             </ul>
           </div>
         </div>
@@ -39,16 +34,16 @@
         <h4 class="ig-label-caps ig-font-mono text-white text-uppercase mb-3">Contacto</h4>
         <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
           <li class="d-flex align-items-start gap-3">
-            <span class="material-symbols-outlined mt-1" style="font-size:20px;opacity:.7;">location_on</span>
+            <span class="material-symbols-outlined ig-footer-icon mt-1">location_on</span>
             <span>Jerónimo Treviño 1647 pte,<br>Monterrey, Nuevo León<br>C.P. 64000</span>
           </li>
           <li class="d-flex align-items-center gap-3">
-            <span class="material-symbols-outlined" style="font-size:20px;opacity:.7;">call</span>
+            <span class="material-symbols-outlined ig-footer-icon">call</span>
             <span>(871) 1789237</span>
           </li>
           <li class="d-flex align-items-center gap-3">
-            <span class="material-symbols-outlined" style="font-size:20px;opacity:.7;">mail</span>
-            <span>luis.zapata@ignosi.mx</span>
+            <span class="material-symbols-outlined ig-footer-icon">mail</span>
+            <span>info@ignosi.mx</span>
           </li>
         </ul>
       </div>
